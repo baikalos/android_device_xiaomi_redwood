@@ -483,6 +483,15 @@
          Equivalent to 102/255 (default for this device) -->
     <item name="config_screenBrightnessSettingDefaultFloat" format="float" type="dimen">0.4</item>
 
+    <!-- Not allow to switch to higher refresh rate when (display, ambient) brightness falls into
+         the region defined by the two arrays -->
+    <integer-array name="config_brightnessThresholdsOfPeakRefreshRate">
+        <item>74</item> <!-- 77% UI brightness -->
+    </integer-array>
+    <integer-array name="config_ambientThresholdsOfPeakRefreshRate">
+        <item>63</item>
+    </integer-array>
+
     <!-- Whether device supports double tap to wake -->
     <bool name="config_supportDoubleTapWake">true</bool>
 
