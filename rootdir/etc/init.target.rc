@@ -203,3 +203,27 @@ service vendor.nv_mac /vendor/bin/nv_mac
     user system
     group system inet net_admin wifi net_raw
     oneshot
+
+#####copy megvii files#####
+on property:sys.boot_completed=1
+    mkdir /data/vendor/camera/model 0777 cameraserver audio
+    mkdir /data/vendor/camera/model/rt_model 0777 cameraserver audio
+    copy /vendor/etc/camera/model/rt_model/preview_model /data/vendor/camera/model/rt_model/preview_model
+    chown cameraserver audio  /data/vendor/camera/model/rt_model/preview_model
+    chmod 0777 /data/vendor/camera/model/rt_model/preview_model
+    copy /vendor/etc/camera/model/rt_model/preview_cache /data/vendor/camera/model/rt_model/preview_cache
+    chown cameraserver audio  /data/vendor/camera/model/rt_model/preview_cache
+    chmod 0777 /data/vendor/camera/model/rt_model/preview_cache
+    copy /vendor/etc/camera/model/rt_model/preview_policy /data/vendor/camera/model/rt_model/preview_policy
+    chown cameraserver audio  /data/vendor/camera/model/rt_model/preview_policy
+    chmod 0777 /data/vendor/camera/model/rt_model/preview_policy
+    mkdir /data/vendor/camera/model/dof_model 0777 cameraserver audio
+    copy /vendor/etc/camera/model/dof_model/capture_cache /data/vendor/camera/model/dof_model/capture_cache
+    chown cameraserver audio  /data/vendor/camera/model/dof_model/capture_cache
+    chmod 0777 /data/vendor/camera/model/dof_model/capture_cache
+    copy /vendor/etc/camera/model/dof_model/capture_model /data/vendor/camera/model/dof_model/capture_model
+    chown cameraserver audio  /data/vendor/camera/model/dof_model/capture_model
+    chmod 0777 /data/vendor/camera/model/dof_model/capture_model
+    copy /vendor/etc/camera/model/dof_model/capture_policy /data/vendor/camera/model/dof_model/capture_policy
+    chown cameraserver audio  /data/vendor/camera/model/dof_model/capture_policy
+    chmod 0777 /data/vendor/camera/model/dof_model/capture_policy
