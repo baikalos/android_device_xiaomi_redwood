@@ -1,0 +1,5 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- ROM maintainer name -->
+    <string name="build_maintainer_summary">P R I Y A N S H U </string>
+    <string name="build_maintainer_telegram">https://t.me/thepriyanshujangid</string>
+</resources>

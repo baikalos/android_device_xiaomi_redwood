@@ -12,13 +12,13 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, device/xiaomi/redwood/device.mk)
 
 # Inherit some common Lineage stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+$(call inherit-product, vendor/evolution/config/common_full_phone.mk)
 
 PRODUCT_BRAND := POCO
 PRODUCT_DEVICE := redwood
 PRODUCT_MANUFACTURER := Xiaomi
 PRODUCT_MODEL := 22101320G
-PRODUCT_NAME := lineage_redwood
+PRODUCT_NAME := evolution_redwood
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
@@ -35,3 +35,12 @@ BUILD_FINGERPRINT := POCO/redwood_global/redwood:13/RKQ1.211001.001/V14.0.2.0.TM
 
 # Blur
 TARGET_ENABLE_BLUR := true
+
+# Evolution specific flags
+TARGET_BOOT_ANIMATION_RES := 1080
+TARGET_USES_MINI_GAPPS	:= false
+TARGET_USES_PICO_GAPPS	:= false
+TARGET_FACE_UNLOCK_SUPPORTED := true
+TARGET_SUPPORTS_QUICK_TAP := false
+TARGET_SUPPORTS_TOUCHGESTURES := false
+
