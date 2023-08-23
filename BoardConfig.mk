@@ -79,6 +79,7 @@ TARGET_RECOVERY_DEVICE_MODULES := libinit_redwood
 
 # Ignore overriding commands errors
 BUILD_BROKEN_DUP_RULES := true
+SELINUX_IGNORE_NEVERALLOWS := true
 
 # Kernel
 BOARD_KERNEL_BASE := 0x00000000
