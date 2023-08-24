@@ -170,8 +170,9 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
    </hal>
    <hal format="aidl" optional="true">
         <name>android.hardware.bluetooth.audio</name>
+       <version>2</version>
         <interface>
-            <name>IBluetoothAudioProvidersFactory</name>
+            <name>IBluetoothAudioProviderFactory</name>
             <instance>default</instance>
         </interface>
     </hal>
