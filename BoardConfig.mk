@@ -7,6 +7,10 @@
 DEVICE_PATH := device/xiaomi/redwood
 
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
+BUILD_BROKEN_DUP_RULES := true
+BUILD_BROKEN_VENDOR_PROPERTY_NAMESPACE := true
+
+BOARD_VENDOR := xiaomi
 
 # A/B
 AB_OTA_UPDATER := true
@@ -66,7 +70,8 @@ DEVICE_MATRIX_FILE := $(DEVICE_PATH)/hidl/compatibility_matrix.xml
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
     $(DEVICE_PATH)/hidl/vendor_framework_compatibility_matrix.xml \
     $(DEVICE_PATH)/hidl/xiaomi_framework_compatibility_matrix.xml \
-    vendor/evolution/config/device_framework_matrix.xml
+    vendor/dolby/vintf/dolby_framework_compatibility_matrix.xml \
+    vendor/lineage/config/device_framework_matrix.xml
 
 DEVICE_MANIFEST_FILE := \
     $(DEVICE_PATH)/hidl/manifest_lahaina.xml \
@@ -96,27 +101,95 @@ TARGET_KERNEL_ADDITIONAL_FLAGS := TARGET_PRODUCT=$(PRODUCT_DEVICE)
 TARGET_KERNEL_NO_GCC := true
 TARGET_KERNEL_SOURCE := kernel/xiaomi/redwood
 
+
+# AtomX Config
 TARGET_KERNEL_CONFIG := vendor/xiaomi-qgki_defconfig vendor/debugfs.config
 TARGET_KERNEL_CONFIG += vendor/redwood-fragment.config
 
+#TARGET_KERNEL_CONFIG := vendor/lahaina-qgki_defconfig vendor/debugfs.config vendor/xiaomi_QGKI.config
+#TARGET_KERNEL_CONFIG += vendor/redwood_QGKI.config
+
 BOARD_KERNEL_CMDLINE += androidboot.console=ttyMSM0
 BOARD_KERNEL_CMDLINE += androidboot.hardware=qcom
+BOARD_KERNEL_CMDLINE += androidboot.init_fatal_reboot_target=recovery
 BOARD_KERNEL_CMDLINE += androidboot.memcg=1
 BOARD_KERNEL_CMDLINE += androidboot.usbcontroller=a600000.dwc3
 BOARD_KERNEL_CMDLINE += cgroup.memory=nokmem,nosocket
 BOARD_KERNEL_CMDLINE += console=ttyMSM0,115200n8
 BOARD_KERNEL_CMDLINE += loop.max_part=7
+BOARD_KERNEL_CMDLINE += lpm_levels.sleep_disabled=1
 BOARD_KERNEL_CMDLINE += msm_rtb.filter=0x237
 BOARD_KERNEL_CMDLINE += service_locator.enable=1
-BOARD_KERNEL_CMDLINE += swiotlb=noforce
+BOARD_KERNEL_CMDLINE += swiotlb=0
 BOARD_KERNEL_CMDLINE += pcie_ports=compat
 BOARD_KERNEL_CMDLINE += iptable_raw.raw_before_defrag=1
 BOARD_KERNEL_CMDLINE += ip6table_raw.raw_before_defrag=1
 
 # Kernel modules
 BOOT_KERNEL_MODULES := \
+goodix_ts.ko \
 xiaomi_touch.ko
-BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(DEVICE_PATH)/modules.load))
+
+BOARD_VENDOR_KERNEL_MODULES_LOAD := \
+usbdtp.ko \
+modules.alias \
+modules.dep \
+modules.softdep \
+goodix_ts.ko \
+va_macro_dlkm.ko \
+mi_thermal_interface.ko \
+rx_macro_dlkm.ko \
+usb_f_dtp.ko \
+wlan_firmware_service_v01.ko \
+btpower.ko \
+wsa883x_dlkm.ko \
+awinic-haptic.ko \
+q6_notifier_dlkm.ko \
+wcd_core_dlkm.ko \
+pinctrl_wcd_dlkm.ko \
+rmnet_core.ko \
+aw882xx_dlkm.ko \
+wcd9xxx_dlkm.ko \
+tx_macro_dlkm.ko \
+ir-spi.ko \
+adsp_loader_dlkm.ko \
+nfc_i2c.ko \
+swr_dmic_dlkm.ko \
+wcd938x_slave_dlkm.ko \
+platform_dlkm.ko \
+wcd938x_dlkm.ko \
+slimbus-ngd.ko \
+slimbus.ko \
+xiaomi_fingerprint.ko \
+q6_dlkm.ko \
+swr_haptics_dlkm.ko \
+hwid.ko \
+llcc_perfmon.ko \
+wsa_macro_dlkm.ko \
+camera.ko \
+machine_dlkm.ko \
+stub_dlkm.ko \
+pinctrl_lpi_dlkm.ko \
+q6_pdr_dlkm.ko \
+device_management_service_v01.ko \
+qti_battery_charger.ko \
+rmnet_shs.ko \
+rmnet_offload.ko \
+hdmi_dlkm.ko \
+icnss2.ko \
+snd_event_dlkm.ko \
+bolero_cdc_dlkm.ko \
+mbhc_dlkm.ko \
+apr_dlkm.ko \
+leds-qti-flash.ko \
+goodix_tee.ko \
+native_dlkm.ko \
+bt_fm_slim.ko \
+wlan.ko \
+swr_ctrl_dlkm.ko \
+swr_dlkm.ko \
+rmnet_ctl.ko
+
 BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(BOOT_KERNEL_MODULES)
 
 # Partitions
@@ -129,7 +202,7 @@ BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 100663296
 BOARD_USES_METADATA_PARTITION := true
 
 BOARD_SUPER_PARTITION_GROUPS := qti_dynamic_partitions
-BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := odm system system_ext vendor product
+BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := odm product system system_ext vendor vendor_dlkm
 BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 9122611200 # BOARD_SUPER_PARTITION_SIZE - 4MB
 
 BOARD_ODMIMAGE_FILE_SYSTEM_TYPE := ext4
@@ -138,6 +211,7 @@ BOARD_SYSTEM_EXTIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := f2fs
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
+# BOARD_VENDOR_DLKMIMAGE_FILE_SYSTEM_TYPE := ext4
 
 ifeq ($(WITH_GMS),true)
 BOARD_PRODUCTIMAGE_PARTITION_RESERVED_SIZE := 104857600
@@ -155,6 +229,7 @@ TARGET_COPY_OUT_ODM := odm
 TARGET_COPY_OUT_SYSTEM_EXT := system_ext
 TARGET_COPY_OUT_VENDOR := vendor
 TARGET_COPY_OUT_PRODUCT := product
+# TARGET_COPY_OUT_VENDOR_DLKM := vendor_dlkm
 
 # Platform
 TARGET_BOARD_PLATFORM := lahaina
@@ -176,7 +251,7 @@ BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_USES_RECOVERY_AS_BOOT := true
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
-TARGET_USERIMAGES_USE_EXT4 := true
+#TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
 # RIL
@@ -204,6 +279,7 @@ BOARD_AVB_VBMETA_SYSTEM_KEY_PATH := external/avb/test/data/testkey_rsa2048.pem
 BOARD_AVB_VBMETA_SYSTEM_ALGORITHM := SHA256_RSA2048
 BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
 BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX_LOCATION := 1
+#BOARD_MOVE_GSI_AVB_KEYS_TO_VENDOR_BOOT := true
 
 # WiFi
 BOARD_WLAN_DEVICE := qcwcn
@@ -223,6 +299,3 @@ WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # Inherit proprietary blobs
 include vendor/xiaomi/redwood/BoardConfigVendor.mk
-
-# Firmware
-include vendor/xiaomi/redwood-firmware/config.mk

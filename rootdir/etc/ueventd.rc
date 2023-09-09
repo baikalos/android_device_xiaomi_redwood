@@ -102,6 +102,8 @@ firmware_directories /vendor/firmware_mnt/image/
 /dev/msm_hweffects        0660   system     audio
 /dev/msm_rtac             0660   system     audio
 
+/dev/cpu_dma_latency      0660   root       system
+
 # NFC permissions
 /dev/nq-nci               0660    nfc         nfc
 
@@ -132,6 +134,10 @@ firmware_directories /vendor/firmware_mnt/image/
 # socinfo
 /sys/devices/soc0           serial_number            0000    root    root
 
+# Charger
+/sys/class/qcom-battery     input_suspend            0660    system  system
+/sys/class/qcom-battery     restrict_cur             0660    system  system
+
 # mius iio devices
 /dev/iio:device*                                        0660   system     system
 /sys/bus/iio/devices/iio:device* buffer/enable                  0600 system system
@@ -140,3 +146,6 @@ firmware_directories /vendor/firmware_mnt/image/
 
 # Fingerprint
 /dev/goodix_fp            0660   system     system
+
+# Charger
+/sys/class/power_supply/battery/    input_power_limit   0664    system  system

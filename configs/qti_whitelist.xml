@@ -34,6 +34,8 @@
     <!-- These are telephony components that need to freely run in the background -->
     <allow-in-power-save package="com.qualcomm.qti.telephonyservice" />
     <allow-in-power-save package="com.qualcomm.qcrilmsgtunnel" />
+    <allow-in-power-save package="org.codeaurora.ims" />
+
     <!-- These telephony applications need access to non-[System]SDK APIs -->
     <hidden-api-whitelisted-app package="com.qualcomm.qti.telephonyservice" />
     <hidden-api-whitelisted-app package="org.codeaurora.ims" />

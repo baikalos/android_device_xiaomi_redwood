@@ -36,7 +36,7 @@ media.stagefright.enable-player=true
 media.stagefright.enable-qcp=true
 media.stagefright.enable-scan=true
 persist.mm.enable.prefetch=true
-ro.media.recorder-max-base-layer-fps=60
+#ro.media.recorder-max-base-layer-fps=60
 vendor.mm.enable.qcom_parser=16777215
 
 # NFC
@@ -57,3 +57,10 @@ persist.vendor.sensors.enable.mag_filter=true
 
 # WFD
 persist.debug.wfd.enable=1
+
+#Baikal dex2oat
+pm.dexopt.install=verify
+pm.dexopt.install-fast=verify
+pm.dexopt.inactive=speed-profile
+pm.dexopt.cmdline=speed-profile
+pm.dexopt.boot-after-ota=verify

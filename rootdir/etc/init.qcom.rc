@@ -27,6 +27,8 @@
 
 import /vendor/etc/init/hw/init.qcom.usb.rc
 import /vendor/etc/init/hw/init.target.rc
+import /vendor/etc/init/hw/init.thermal.rc
+import /vendor/etc/init/hw/init.custom.rc
 
 on early-init
     # Change ownership of sysfs power control node
@@ -79,6 +81,10 @@ on boot
     chmod 0660 /dev/ttyHS0
 
     chown system system /sys/kernel/boot_slpi/ssr
+
+    # Allow system to read measured screen FPS
+    chown system graphics /sys/class/drm/card0/sde-crtc-0/measured_fps
+    chmod 0666 /sys/class/drm/card0/sde-crtc-0/measured_fps
 
     # This location is used by QCRIL to host UNIX domain
     # socket files used for internal IPC within QCRIL
@@ -229,11 +235,17 @@ on post-fs-data
     # Create vpp directory
     mkdir /data/vendor/vpp 0770 media media
 
-    setprop vold.post_fs_data_done 1
-
     # Dolby
     mkdir /data/vendor/dolby 0770 media media
     mkdir /data/vendor/multimedia 0775 system system
+
+    chown system system /sys/class/devfreq/soc:qcom,cpu-llcc-ddr-bw/min_freq
+    chmod 0664 /sys/class/devfreq/soc:qcom,cpu-llcc-ddr-bw/min_freq
+
+    chown root system /dev/cpu_dma_latency
+    chmod 0660 /dev/cpu_dma_latency
+
+    setprop vold.post_fs_data_done 1
 
 on property:sys.boot_completed=1
     # Enable UFS clock scaling back
@@ -247,8 +259,18 @@ on property:sys.boot_completed=1
     chown media audio /sys/kernel/wdsp0/boot
     chown media audio /sys/kernel/wcd_cpe0/fw_name
 
+    # Charger
+    wait /sys/class/power_supply/battery/input_power_limit 15
+
+    chown system system /sys/class/power_supply/battery/input_power_limit
+    chmod 0664 /sys/class/power_supply/battery/input_power_limit
+
     # Reinit lmkd to reconfigure lmkd properties
     setprop lmkd.reinit 1
+
+    # Enable PowerHAL
+    setprop vendor.powerhal.init 1
+
 
 service vendor.qrtr-ns /vendor/bin/qrtr-ns -f
     class core
@@ -326,6 +348,6 @@ service vendor.audio-hal /vendor/bin/hw/android.hardware.audio.service
     group audio camera drmrpc inet media mediadrm net_bt net_bt_admin net_bw_acct oem_2901 wakelock
     capabilities BLOCK_SUSPEND
     ioprio rt 4
-    writepid /dev/cpuset/foreground/tasks /dev/stune/foreground/tasks
+    task_profiles ProcessCapacityHigh HighPerformance
     socket audio_hw_socket seqpacket 0666 system system
     onrestart restart audioserver
