@@ -1,0 +1,465 @@
+{
+  "Nodes": [
+    {
+      "Name": "PMQoSCpuDmaLatency",
+      "Path": "/dev/cpu_dma_latency",
+      "Values": [
+        "0",
+        "30",
+    	"43",
+        "64",
+        "67",
+        "100",
+        "3000"
+      ],
+      "HoldFd": true
+    },
+    {
+      "Name": "CPULittleClusterMaxFreq",
+      "Path": "/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq",
+      "Values": [
+        "9999999",
+        "1651200",
+        "1516800",
+        "1324800",
+        "1152000",
+        "940800",
+        "806400",
+        "691200",
+        "300000"
+      ],
+      "DefaultIndex": 0,
+      "ResetOnInit": true
+    },
+    {
+      "Name": "CPULittleClusterMinFreq",
+      "Path": "/sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq",
+      "Values": [
+        "9999999",
+        "1651200",
+        "1516800",
+        "1324800",
+        "1152000",
+        "940800",
+        "806400",
+        "691200",
+        "300000"
+      ],
+      "ResetOnInit": true
+    },
+    {
+      "Name": "CPUBigClusterMaxFreq",
+      "Path": "/sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq",
+      "Values": [
+        "9999999",
+        "2131200",
+        "2054400",
+        "1900800",
+        "1651200",
+        "1516800",
+        "1344000",
+        "1228800",
+        "940800",
+        "691200"
+      ],
+      "DefaultIndex": 0,
+      "ResetOnInit": true
+    },
+    {
+      "Name": "CPUBigClusterMinFreq",
+      "Path": "/sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq",
+      "Values": [
+        "9999999",
+        "2131200",
+        "2054400",
+        "1900800",
+        "1651200",
+        "1516800",
+        "1344000",
+        "1228800",
+        "940800",
+        "691200"
+      ],
+      "ResetOnInit": true
+    },
+    {
+      "Name": "CPUBigPlusClusterMaxFreq",
+      "Path": "/sys/devices/system/cpu/cpu7/cpufreq/scaling_max_freq",
+      "Values": [
+        "9999999",
+        "2400000",
+        "2380800",
+        "2208000",
+        "2035200",
+        "1862400",
+        "1766400",
+        "1516800",
+        "1324800",
+        "1056000",
+        "806400"
+      ],
+      "DefaultIndex": 0,
+      "ResetOnInit": true
+    },
+    {
+      "Name": "CPUBigPlusClusterMinFreq",
+      "Path": "/sys/devices/system/cpu/cpu7/cpufreq/scaling_min_freq",
+      "Values": [
+        "9999999",
+        "2400000",
+        "2380800",
+        "2208000",
+        "2035200",
+        "1862400",
+        "1766400",
+        "1516800",
+        "1324800",
+        "1056000",
+        "806400"
+      ],
+      "ResetOnInit": true
+    },
+    {
+      "Name": "UclampTAMin",
+      "Path": "/dev/cpuctl/top-app/cpu.uclamp.min",
+      "Values": [
+        "50",
+        "30",
+        "0"
+      ],
+      "ResetOnInit": true
+    },
+    {
+      "Name": "CPULittleClusterCoreCtl",
+      "Path": "/sys/devices/system/cpu/cpu0/core_ctl/enable",
+      "Values": [
+        "0",
+        "1"
+      ],
+      "ResetOnInit": true
+    },
+    {
+      "Name": "CPUBigClusterCoreCtl",
+      "Path": "/sys/devices/system/cpu/cpu4/core_ctl/enable",
+      "Values": [
+        "0",
+        "1"
+      ],
+      "ResetOnInit": true
+    },
+    {
+      "Name": "CPUBigPlusClusterCoreCtl",
+      "Path": "/sys/devices/system/cpu/cpu7/core_ctl/enable",
+      "Values": [
+        "0",
+        "1"
+      ],
+      "ResetOnInit": true
+    },
+    {
+      "Name": "SchedBoost",
+      "Path": "/proc/sys/kernel/sched_boost",
+      "Values": [
+        "2",
+        "1",
+        "0"
+      ],
+      "ResetOnInit": true
+    },
+    {
+      "Name": "GPUMaxFreq",
+      "Path": "/sys/class/kgsl/kgsl-3d0/max_pwrlevel",
+      "Values": [
+        "0",
+        "1",
+        "2"
+      ],
+      "Comments": [
+        "0 => 550000000",
+        "1 => 450000000",
+        "2 => 315000000"
+      ],
+      "DefaultIndex": 0,
+      "ResetOnInit": true
+    },
+    {
+      "Name": "GPUMinFreq",
+      "Path": "/sys/class/kgsl/kgsl-3d0/min_pwrlevel",
+      "Values": [
+        "0",
+        "1",
+        "2"
+      ],
+      "ResetOnInit": true
+    },
+    {
+      "Name": "GPUForceRailOn",
+      "Path": "/sys/class/kgsl/kgsl-3d0/force_rail_on",
+      "Values": [
+        "1",
+        "0"
+      ],
+      "ResetOnInit": true
+    },
+    {
+      "Name": "GPUForceClkOn",
+      "Path": "/sys/class/kgsl/kgsl-3d0/force_clk_on",
+      "Values": [
+        "1",
+        "0"
+      ],
+      "ResetOnInit": true
+    },
+    {
+      "Name": "GPUIdleTimer",
+      "Path": "/sys/class/kgsl/kgsl-3d0/idle_timer",
+      "Values": [
+        "10000",
+        "58"
+      ],
+      "ResetOnInit": true
+    },
+    {
+      "Name": "CPUBWHystTriggerCount",
+      "Path": "/sys/class/devfreq/soc:qcom,cpu-cpu-llcc-bw/bw_hwmon/hyst_trigger_count",
+      "Values": [
+        "0",
+        "3"
+      ],
+      "ResetOnInit": true
+    },
+    {
+      "Name": "CPUBWHistMemory",
+      "Path": "/sys/class/devfreq/soc:qcom,cpu-cpu-llcc-bw/bw_hwmon/hist_memory",
+      "Values": [
+        "0",
+        "20"
+      ],
+      "ResetOnInit": true
+    },
+    {
+      "Name": "CPUBWHystLength",
+      "Path": "/sys/class/devfreq/soc:qcom,cpu-cpu-llcc-bw/bw_hwmon/hyst_length",
+      "Values": [
+        "0",
+        "10"
+      ],
+      "ResetOnInit": true
+    },
+    {
+      "Name": "CPUBWMinFreq",
+      "Path": "/sys/class/devfreq/soc:qcom,cpu-cpu-llcc-bw/min_freq",
+      "Values": [
+        "16265",
+        "7110",
+        "2288"
+      ],
+      "ResetOnInit": true
+    },
+    {
+      "Name": "LLCCBWMinFreq",
+      "Path": "/sys/class/devfreq/soc:qcom,cpu-llcc-ddr-bw/min_freq",
+      "Values": [
+        "8136",
+        "5931",
+        "762"
+      ],
+      "ResetOnInit": true
+    },
+    {
+      "Name": "PowerHALMainState",
+      "Path": "vendor.powerhal.state",
+      "Values": [
+        "LAUNCH",
+        "EXPENSIVE_RENDERING",
+        "INTERACTION",
+        "FIXED_PERFORMANCE",
+        "SUSTAINED_PERFORMANCE",
+        "LOW_POWER",
+        "DEVICE_IDLE",
+        "DISPLAY_INACTIVE",
+        "VR",
+        "INTERACTIVE",
+        "UNKNOWN"
+      ],
+      "Type": "Property"
+    },
+    {
+      "Name": "PowerHALAudioState",
+      "Path": "vendor.powerhal.audio",
+      "Values": [
+        "AUDIO_STREAMING_LOW_LATENCY",
+        ""
+      ],
+      "Type": "Property"
+    },
+    {
+      "Name": "PowerHALAudioBoostState",
+      "Path": "vendor.powerhal.audio.boost",
+      "Values": [
+        "AUDIO_LAUNCH",
+        ""
+      ],
+      "Type": "Property"
+    },
+    {
+      "Name": "PowerHALRenderingState",
+      "Path": "vendor.powerhal.rendering",
+      "Values": [
+        "EXPENSIVE_RENDERING",
+        ""
+      ],
+      "Type": "Property"
+    }
+  ],
+  "Actions": [
+    { "PowerHint": "INTERACTIVE", "Node": "PowerHALMainState", "Duration": 0, "Value": "INTERACTIVE" },
+
+    { "PowerHint": "INTERACTIVE", "Node": "CPULittleClusterMaxFreq", "Duration": 0, "Value": "9999999", "OverrideProperty": "persist.baikal.inter.CPULittleClusterMaxFreq" },
+    { "PowerHint": "INTERACTIVE", "Node": "CPUBigClusterMaxFreq", "Duration": 0, "Value": "9999999", "OverrideProperty": "persist.baikal.inter.CPUBigClusterMaxFreq" },
+    { "PowerHint": "INTERACTIVE", "Node": "CPUBigPlusClusterMaxFreq", "Duration": 0, "Value": "9999999", "OverrideProperty": "persist.baikal.inter.CPUBigPlusClusterMaxFreq" },
+    { "PowerHint": "INTERACTIVE", "Node": "CPULittleClusterMinFreq", "Duration": 0, "Value": "300000", "OverrideProperty": "persist.baikal.inter.CPULittleClusterMinFreq" },
+    { "PowerHint": "INTERACTIVE", "Node": "CPUBigClusterMinFreq", "Duration": 0, "Value": "691200", "OverrideProperty": "persist.baikal.inter.CPUBigClusterMinFreq" },
+    { "PowerHint": "INTERACTIVE", "Node": "CPUBigPlusClusterMinFreq", "Duration": 0, "Value": "806400", "OverrideProperty": "persist.baikal.inter.CPUBigPlusClusterMinFreq" },
+    { "PowerHint": "INTERACTIVE", "Node": "GPUMinFreq", "Duration": 0, "Value": "2", "OverrideProperty": "persist.baikal.inter.GPUMinFreq" },
+    { "PowerHint": "INTERACTIVE", "Node": "GPUMaxFreq", "Duration": 0, "Value": "0", "OverrideProperty": "persist.baikal.inter.GPUMaxFreq" },
+    { "PowerHint": "INTERACTIVE", "Node": "CPULittleClusterCoreCtl", "Duration": 0, "Value": "1", "OverrideProperty": "persist.baikal.inter.CPULittleClusterCoreCtl" },
+    { "PowerHint": "INTERACTIVE", "Node": "CPUBigClusterCoreCtl", "Duration": 0, "Value": "1", "OverrideProperty": "persist.baikal.inter.CPUBigClusterCoreCtl" },
+    { "PowerHint": "INTERACTIVE", "Node": "CPUBigPlusClusterCoreCtl", "Duration": 0, "Value": "1", "OverrideProperty": "persist.baikal.inter.CPUBigPlusClusterCoreCtl" },
+
+    { "PowerHint": "SUSTAINED_PERFORMANCE", "Node": "PowerHALMainState", "Duration": 0, "Value": "SUSTAINED_PERFORMANCE" },
+
+    { "PowerHint": "SUSTAINED_PERFORMANCE", "Node": "CPULittleClusterMaxFreq", "Duration": 0, "Value": "1516800", "OverrideProperty": "persist.baikal.sustain.CPULittleClusterMaxFreq" },
+    { "PowerHint": "SUSTAINED_PERFORMANCE", "Node": "CPUBigClusterMaxFreq", "Duration": 0, "Value": "1651200", "OverrideProperty": "persist.baikal.sustain.CPUBigClusterMaxFreq" },
+    { "PowerHint": "SUSTAINED_PERFORMANCE", "Node": "CPUBigPlusClusterMaxFreq", "Duration": 0, "Value": "1516800", "OverrideProperty": "persist.baikal.sustain.CPUBigPlusClusterMaxFreq" },
+    { "PowerHint": "SUSTAINED_PERFORMANCE", "Node": "CPULittleClusterMinFreq", "Duration": 0, "Value": "940800", "OverrideProperty": "persist.baikal.sustain.CPULittleClusterMinFreq" },
+    { "PowerHint": "SUSTAINED_PERFORMANCE", "Node": "CPUBigClusterMinFreq", "Duration": 0, "Value": "940800", "OverrideProperty": "persist.baikal.sustain.CPUBigClusterMinFreq" },
+    { "PowerHint": "SUSTAINED_PERFORMANCE", "Node": "CPUBigPlusClusterMinFreq", "Duration": 0, "Value": "1056000", "OverrideProperty": "persist.baikal.sustain.CPUBigPlusClusterMinFreq" },
+
+    { "PowerHint": "SUSTAINED_PERFORMANCE", "Node": "GPUMinFreq", "Duration": 0, "Value": "2", "OverrideProperty": "persist.baikal.sustain.GPUMinFreq" },
+    { "PowerHint": "SUSTAINED_PERFORMANCE", "Node": "GPUMaxFreq", "Duration": 0, "Value": "1", "OverrideProperty": "persist.baikal.sustain.GPUMaxFreq" },
+
+    { "PowerHint": "SUSTAINED_PERFORMANCE", "Node": "CPULittleClusterCoreCtl", "Duration": 0, "Value": "0" },
+    { "PowerHint": "SUSTAINED_PERFORMANCE", "Node": "CPUBigClusterCoreCtl", "Duration": 0, "Value": "0" },
+    { "PowerHint": "SUSTAINED_PERFORMANCE", "Node": "CPUBigPlusClusterCoreCtl", "Duration": 0, "Value": "0" },
+    { "PowerHint": "SUSTAINED_PERFORMANCE", "Node": "PMQoSCpuDmaLatency", "Duration": 0, "Value": "0" },
+
+
+    { "PowerHint": "FIXED_PERFORMANCE", "Node": "PowerHALMainState", "Duration": 0, "Value": "FIXED_PERFORMANCE" },
+
+    { "PowerHint": "FIXED_PERFORMANCE", "Node": "CPULittleClusterMaxFreq", "Duration": 0, "Value": "9999999", "OverrideProperty": "persist.baikal.fixed.CPULittleClusterMaxFreq" },
+    { "PowerHint": "FIXED_PERFORMANCE", "Node": "CPUBigClusterMaxFreq", "Duration": 0, "Value": "9999999", "OverrideProperty": "persist.baikal.fixed.CPUBigClusterMaxFreq" },
+    { "PowerHint": "FIXED_PERFORMANCE", "Node": "CPUBigPlusClusterMaxFreq", "Duration": 0, "Value": "9999999", "OverrideProperty": "persist.baikal.fixed.CPUBigPlusClusterMaxFreq" },
+    { "PowerHint": "FIXED_PERFORMANCE", "Node": "CPULittleClusterMinFreq", "Duration": 0, "Value": "1324800", "OverrideProperty": "persist.baikal.fixed.CPULittleClusterMinFreq" },
+    { "PowerHint": "FIXED_PERFORMANCE", "Node": "CPUBigClusterMinFreq", "Duration": 0, "Value": "1228800", "OverrideProperty": "persist.baikal.fixed.CPUBigClusterMinFreq" },
+    { "PowerHint": "FIXED_PERFORMANCE", "Node": "CPUBigPlusClusterMinFreq", "Duration": 0, "Value": "1056000", "OverrideProperty": "persist.baikal.fixed.CPUBigPlusClusterMinFreq" },
+
+    { "PowerHint": "FIXED_PERFORMANCE", "Node": "GPUMinFreq", "Duration": 0, "Value": "1", "OverrideProperty": "persist.baikal.fixed.GPUMinFreq" },
+    { "PowerHint": "FIXED_PERFORMANCE", "Node": "GPUMaxFreq", "Duration": 0, "Value": "0", "OverrideProperty": "persist.baikal.fixed.GPUMaxFreq" },
+
+    { "PowerHint": "FIXED_PERFORMANCE", "Node": "CPULittleClusterCoreCtl", "Duration": 0, "Value": "0" },
+    { "PowerHint": "FIXED_PERFORMANCE", "Node": "CPUBigClusterCoreCtl", "Duration": 0, "Value": "0" },
+    { "PowerHint": "FIXED_PERFORMANCE", "Node": "CPUBigPlusClusterCoreCtl", "Duration": 0, "Value": "0" },
+    { "PowerHint": "FIXED_PERFORMANCE", "Node": "PMQoSCpuDmaLatency", "Duration": 0, "Value": "0" },
+
+
+    { "PowerHint": "LOW_POWER", "Node": "PowerHALMainState", "Duration": 0, "Value": "LOW_POWER" },
+
+    { "PowerHint": "LOW_POWER", "Node": "CPULittleClusterMaxFreq", "Duration": 0, "Value": "1651200", "OverrideProperty": "persist.baikal.low.CPULittleClusterMaxFreq" },
+    { "PowerHint": "LOW_POWER", "Node": "CPUBigClusterMaxFreq", "Duration": 0, "Value": "1900800", "OverrideProperty": "persist.baikal.low.CPUBigClusterMaxFreq" },
+    { "PowerHint": "LOW_POWER", "Node": "CPUBigPlusClusterMaxFreq", "Duration": 0, "Value": "1862400", "OverrideProperty": "persist.baikal.low.CPUBigPlusClusterMaxFreq" },
+
+    { "PowerHint": "LOW_POWER", "Node": "CPULittleClusterMinFreq", "Duration": 0, "Value": "300000", "OverrideProperty": "persist.baikal.low.CPULittleClusterMinFreq" },
+    { "PowerHint": "LOW_POWER", "Node": "CPUBigClusterMinFreq", "Duration": 0, "Value": "691200", "OverrideProperty": "persist.baikal.low.CPUBigClusterMinFreq" },
+    { "PowerHint": "LOW_POWER", "Node": "CPUBigPlusClusterMinFreq", "Duration": 0, "Value": "806400", "OverrideProperty": "persist.baikal.low.CPUBigPlusClusterMinFreq" },
+
+    { "PowerHint": "LOW_POWER", "Node": "GPUMinFreq", "Duration": 0, "Value": "2", "OverrideProperty": "persist.baikal.low.GPUMinFreq" },
+    { "PowerHint": "LOW_POWER", "Node": "GPUMaxFreq", "Duration": 0, "Value": "2", "OverrideProperty": "persist.baikal.low.GPUMaxFreq" },
+
+    { "PowerHint": "LOW_POWER", "Node": "CPULittleClusterCoreCtl", "Duration": 0, "Value": "1" },
+    { "PowerHint": "LOW_POWER", "Node": "CPUBigClusterCoreCtl", "Duration": 0, "Value": "1" },
+    { "PowerHint": "LOW_POWER", "Node": "CPUBigPlusClusterCoreCtl", "Duration": 0, "Value": "1" },
+
+    { "PowerHint": "DEVICE_IDLE", "Node": "PowerHALMainState", "Duration": 0, "Value": "DEVICE_IDLE" },
+
+    { "PowerHint": "DEVICE_IDLE", "Node": "CPULittleClusterMaxFreq", "Duration": 0, "Value": "1651200", "OverrideProperty": "persist.baikal.idle.CPULittleClusterMaxFreq" },
+    { "PowerHint": "DEVICE_IDLE", "Node": "CPUBigClusterMaxFreq", "Duration": 0, "Value": "1900800", "OverrideProperty": "persist.baikal.idle.CPUBigClusterMaxFreq" },
+    { "PowerHint": "DEVICE_IDLE", "Node": "CPUBigPlusClusterMaxFreq", "Duration": 0, "Value": "1862400", "OverrideProperty": "persist.baikal.idle.CPUBigPlusClusterMaxFreq" },
+
+    { "PowerHint": "DEVICE_IDLE", "Node": "CPULittleClusterMinFreq", "Duration": 0, "Value": "300000", "OverrideProperty": "persist.baikal.idle.CPULittleClusterMinFreq" },
+    { "PowerHint": "DEVICE_IDLE", "Node": "CPUBigClusterMinFreq", "Duration": 0, "Value": "691200", "OverrideProperty": "persist.baikal.idle.CPUBigClusterMinFreq" },
+    { "PowerHint": "DEVICE_IDLE", "Node": "CPUBigPlusClusterMinFreq", "Duration": 0, "Value": "806400", "OverrideProperty": "persist.baikal.idle.CPUBigPlusClusterMinFreq" },
+
+    { "PowerHint": "DEVICE_IDLE", "Node": "GPUMinFreq", "Duration": 0, "Value": "2", "OverrideProperty": "persist.baikal.idle.GPUMinFreq" },
+    { "PowerHint": "DEVICE_IDLE", "Node": "GPUMaxFreq", "Duration": 0, "Value": "2", "OverrideProperty": "persist.baikal.idle.GPUMaxFreq" },
+
+    { "PowerHint": "DEVICE_IDLE", "Node": "CPULittleClusterCoreCtl", "Duration": 0, "Value": "1" },
+    { "PowerHint": "DEVICE_IDLE", "Node": "CPUBigClusterCoreCtl", "Duration": 0, "Value": "1" },
+    { "PowerHint": "DEVICE_IDLE", "Node": "CPUBigPlusClusterCoreCtl", "Duration": 0, "Value": "1" },
+
+    { "PowerHint": "INTERACTION", "Node": "PowerHALMainState", "Duration": 0, "Value": "INTERACTION" },
+
+    { "PowerHint": "INTERACTION", "Node": "CPULittleClusterMaxFreq", "Duration": 0, "Value": "9999999", "OverrideProperty": "persist.baikal.boost.CPULittleClusterMaxFreq" },
+    { "PowerHint": "INTERACTION", "Node": "CPUBigClusterMaxFreq", "Duration": 0, "Value": "9999999", "OverrideProperty": "persist.baikal.boost.CPUBigClusterMaxFreq" },
+    { "PowerHint": "INTERACTION", "Node": "CPUBigPlusClusterMaxFreq", "Duration": 0, "Value": "9999999", "OverrideProperty": "persist.baikal.boost.CPUBigPlusClusterMaxFreq" },
+
+    { "PowerHint": "INTERACTION", "Node": "CPULittleClusterMinFreq", "Duration": 0, "Value": "1324800", "OverrideProperty": "persist.baikal.boost.CPULittleClusterMinFreq" },
+    { "PowerHint": "INTERACTION", "Node": "CPUBigClusterMinFreq", "Duration": 0, "Value": "1516800", "OverrideProperty": "persist.baikal.boost.CPUBigClusterMinFreq" },
+    { "PowerHint": "INTERACTION", "Node": "CPUBigPlusClusterMinFreq", "Duration": 0, "Value": "1516800", "OverrideProperty": "persist.baikal.boost.CPUBigPlusClusterMinFreq" },
+
+    { "PowerHint": "INTERACTION", "Node": "GPUMinFreq", "Duration": 0, "Value": "2", "OverrideProperty": "persist.baikal.boost.GPUMinFreq" },
+    { "PowerHint": "INTERACTION", "Node": "GPUMaxFreq", "Duration": 0, "Value": "0", "OverrideProperty": "persist.baikal.boost.GPUMaxFreq" },
+
+    { "PowerHint": "INTERACTION", "Node": "CPULittleClusterCoreCtl", "Duration": 0, "Value": "0" },
+    { "PowerHint": "INTERACTION", "Node": "CPUBigClusterCoreCtl", "Duration": 0, "Value": "0" },
+    { "PowerHint": "INTERACTION", "Node": "CPUBigPlusClusterCoreCtl", "Duration": 0, "Value": "1" },
+
+    { "PowerHint": "INTERACTION", "Node": "UclampTAMin", "Duration": 0, "Value": "30" },
+    { "PowerHint": "INTERACTION", "Node": "CPUBWHystTriggerCount", "Duration": 0, "Value": "0" },
+    { "PowerHint": "INTERACTION", "Node": "CPUBWHystLength", "Duration": 0, "Value": "0" },
+    { "PowerHint": "INTERACTION", "Node": "CPUBWHistMemory", "Duration": 0, "Value": "0" },
+    { "PowerHint": "INTERACTION", "Node": "CPUBWMinFreq", "Duration": 0, "Value": "7110" },
+    { "PowerHint": "INTERACTION", "Node": "LLCCBWMinFreq", "Duration": 0, "Value": "5931" },
+
+    { "PowerHint": "LAUNCH", "Node": "PowerHALMainState", "Duration": 3000, "Value": "LAUNCH" },
+    { "PowerHint": "LAUNCH", "Node": "CPUBigClusterMinFreq", "Duration": 3000, "Value": "9999999" },
+    { "PowerHint": "LAUNCH", "Node": "CPUBigPlusClusterMinFreq", "Duration": 3000, "Value": "9999999" },
+    { "PowerHint": "LAUNCH", "Node": "CPULittleClusterMinFreq", "Duration": 3000, "Value": "9999999" },
+    { "PowerHint": "LAUNCH", "Node": "UclampTAMin", "Duration": 3000, "Value": "50" },
+    { "PowerHint": "LAUNCH", "Node": "CPUBWHystTriggerCount", "Duration": 3000, "Value": "0" },
+    { "PowerHint": "LAUNCH", "Node": "CPUBWHystLength", "Duration": 3000, "Value": "0" },
+    { "PowerHint": "LAUNCH", "Node": "CPUBWHistMemory", "Duration": 3000, "Value": "0" },
+    { "PowerHint": "LAUNCH", "Node": "CPUBWMinFreq", "Duration": 3000, "Value": "16265" },
+    { "PowerHint": "LAUNCH", "Node": "LLCCBWMinFreq", "Duration": 3000, "Value": "8136" },
+    { "PowerHint": "LAUNCH", "Node": "GPUForceClkOn", "Duration": 3000, "Value": "1" },
+    { "PowerHint": "LAUNCH", "Node": "GPUForceRailOn", "Duration": 3000, "Value": "1" },
+    { "PowerHint": "LAUNCH", "Node": "GPUIdleTimer", "Duration": 3000, "Value": "10000" },
+
+    { "PowerHint": "LAUNCH", "Node": "CPULittleClusterCoreCtl", "Duration": 0, "Value": "0" },
+    { "PowerHint": "LAUNCH", "Node": "CPUBigClusterCoreCtl", "Duration": 0, "Value": "0" },
+    { "PowerHint": "LAUNCH", "Node": "CPUBigPlusClusterCoreCtl", "Duration": 0, "Value": "0" },
+
+
+    { "PowerHint": "EXPENSIVE_RENDERING", "Node": "PowerHALRenderingState", "Duration": 0, "Value": "EXPENSIVE_RENDERING" },
+    { "PowerHint": "EXPENSIVE_RENDERING", "Node": "PowerHALMainState", "Duration": 0, "Value": "EXPENSIVE_RENDERING" },
+    { "PowerHint": "EXPENSIVE_RENDERING", "Node": "CPULittleClusterMaxFreq", "Duration": 0, "Value": "9999999", "OverrideProperty": "persist.baikal.render.CPULittleClusterMaxFreq" },
+    { "PowerHint": "EXPENSIVE_RENDERING", "Node": "CPUBigClusterMaxFreq", "Duration": 0, "Value": "9999999", "OverrideProperty": "persist.baikal.render.CPUBigClusterMaxFreq" },
+    { "PowerHint": "EXPENSIVE_RENDERING", "Node": "CPUBigPlusClusterMaxFreq", "Duration": 0, "Value": "9999999", "OverrideProperty": "persist.baikal.render.CPUBigPlusClusterMaxFreq" },
+
+    { "PowerHint": "EXPENSIVE_RENDERING", "Node": "CPULittleClusterMinFreq", "Duration": 0, "Value": "1324800", "OverrideProperty": "persist.baikal.render.CPULittleClusterMinFreq" },
+    { "PowerHint": "EXPENSIVE_RENDERING", "Node": "CPUBigClusterMinFreq", "Duration": 0, "Value": "1516800", "OverrideProperty": "persist.baikal.render.CPUBigClusterMinFreq" },
+    { "PowerHint": "EXPENSIVE_RENDERING", "Node": "CPUBigPlusClusterMinFreq", "Duration": 0, "Value": "1516800", "OverrideProperty": "persist.baikal.render.CPUBigPlusClusterMinFreq" },
+
+    { "PowerHint": "EXPENSIVE_RENDERING", "Node": "GPUMinFreq", "Duration": 0, "Value": "0", "OverrideProperty": "persist.baikal.render.GPUMinFreq" },
+    { "PowerHint": "EXPENSIVE_RENDERING", "Node": "GPUMaxFreq", "Duration": 0, "Value": "0", "OverrideProperty": "persist.baikal.render.GPUMaxFreq" },
+
+    { "PowerHint": "EXPENSIVE_RENDERING", "Node": "CPULittleClusterCoreCtl", "Duration": 0, "Value": "0" },
+    { "PowerHint": "EXPENSIVE_RENDERING", "Node": "CPUBigClusterCoreCtl", "Duration": 0, "Value": "0" },
+
+    { "PowerHint": "AUDIO_STREAMING_LOW_LATENCY", "Node": "PowerHALAudioState","Duration": 0,"Value": "AUDIO_STREAMING_LOW_LATENCY"},
+    { "PowerHint": "AUDIO_STREAMING_LOW_LATENCY", "Node": "CPULittleClusterCoreCtl", "Duration": 0, "Value": "0" },
+
+    { "PowerHint": "AUDIO_LAUNCH", "Node": "PowerHALAudioBoostState","Duration": 0,"Value": "AUDIO_LAUNCH"},
+
+  ]
+}

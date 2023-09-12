@@ -1,0 +1,87 @@
+# Balance (default profile)
+on property:baikal.power.thermal=1
+    write /sys/class/thermal/thermal_message/sconfig 0
+    setprop "baikal.eng.therm.cur_profile" "balance"
+
+# Becnhmark
+on property:baikal.power.thermal=2
+    write /sys/class/thermal/thermal_message/sconfig 10
+    setprop "baikal.eng.therm.cur_profile" "benchmark"
+
+# Browser
+on property:baikal.power.thermal=3
+    write /sys/class/thermal/thermal_message/sconfig 11
+    setprop "baikal.eng.therm.cur_profile" "browser"
+
+# Camera
+on property:baikal.power.thermal=4
+    write /sys/class/thermal/thermal_message/sconfig 12
+    setprop "baikal.eng.therm.cur_profile" "camera"
+
+# Dialer
+on property:baikal.power.thermal=5
+    write /sys/class/thermal/thermal_message/sconfig 8
+    setprop "baikal.eng.therm.cur_profile" "dialer"
+
+# Gaming
+on property:baikal.power.thermal=6
+    write /sys/class/thermal/thermal_message/sconfig 9
+    setprop "baikal.eng.therm.cur_profile" "gaming"
+
+# Streaming
+on property:baikal.power.thermal=7
+    write /sys/class/thermal/thermal_message/sconfig 4
+    setprop "baikal.eng.therm.cur_profile" "streaming"
+
+# Cool
+on property:baikal.power.thermal=8
+    write /sys/class/thermal/thermal_message/sconfig 3
+    setprop "baikal.eng.therm.cur_profile" "cool"
+
+#        "LAUNCH",
+#        "FIXED_PERFORMANCE",
+#        "SUSTAINED_PERFORMANCE",
+#        "INTERACTIVE",
+#        "INTERACTION",
+#        "LOW_POWER",
+#        "DEVICE_IDLE",
+#        "DISPLAY_INACTIVE",
+#        "EXPENSIVE_RENDERING",
+#        "VR",
+#        "UNKNOWN"
+
+on property:vendor.powerhal.state=UNKNOWN
+    setprop "baikal.eng.perf.cur_profile" "none"
+    #write /sys/module/sched/parameters/hal_power_mode -1
+
+on property:vendor.powerhal.state=INTERACTIVE
+    setprop "baikal.eng.perf.cur_profile" "balance"
+    #write /sys/module/sched/parameters/hal_power_mode 7
+
+on property:vendor.powerhal.state=LOW_POWER
+    setprop "baikal.eng.perf.cur_profile" "low"
+    #write /sys/module/sched/parameters/hal_power_mode 1
+
+on property:vendor.powerhal.state=SUSTAINED_PERFORMANCE
+    setprop "baikal.eng.perf.cur_profile" "sustain"
+    #write /sys/module/sched/parameters/hal_power_mode 2
+
+on property:vendor.powerhal.state=FIXED_PERFORMANCE
+    setprop "baikal.eng.perf.cur_profile" "fixed"
+    #write /sys/module/sched/parameters/hal_power_mode 3
+
+on property:vendor.powerhal.state=DEVICE_IDLE
+    setprop "baikal.eng.perf.cur_profile" "idle"
+    #write /sys/module/sched/parameters/hal_power_mode 8
+
+on property:vendor.powerhal.state=INTERACTION
+    setprop "baikal.eng.perf.cur_profile" "boost"
+    #write /sys/module/sched/parameters/hal_power_mode 17
+
+on property:vendor.powerhal.state=LAUNCH
+    setprop "baikal.eng.perf.cur_profile" "launch"
+    #write /sys/module/sched/parameters/hal_power_mode 5
+
+on property:vendor.powerhal.state=EXPENSIVE_RENDERING
+    setprop "baikal.eng.perf.cur_profile" "render"
+    #write /sys/module/sched/parameters/hal_power_mode 6

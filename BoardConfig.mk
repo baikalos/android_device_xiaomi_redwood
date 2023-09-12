@@ -8,6 +8,9 @@ DEVICE_PATH := device/xiaomi/redwood
 
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 BUILD_BROKEN_DUP_RULES := true
+BUILD_BROKEN_VENDOR_PROPERTY_NAMESPACE := true
+
+BOARD_VENDOR := xiaomi
 
 # A/B
 AB_OTA_UPDATER := true
@@ -41,6 +44,7 @@ TARGET_2ND_CPU_VARIANT_RUNTIME := kryo385
 
 # Audio
 AUDIO_FEATURE_ENABLED_EXTENDED_COMPRESS_FORMAT := true
+AUDIO_FEATURE_ENABLED_DS2_DOLBY_DAP := true
 AUDIO_FEATURE_ENABLED_GKI := true
 AUDIO_FEATURE_ENABLED_PROXY_DEVICE := true
 BOARD_SUPPORTS_SOUND_TRIGGER := true
@@ -68,6 +72,7 @@ DEVICE_MATRIX_FILE := $(DEVICE_PATH)/hidl/compatibility_matrix.xml
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
     $(DEVICE_PATH)/hidl/vendor_framework_compatibility_matrix.xml \
     $(DEVICE_PATH)/hidl/xiaomi_framework_compatibility_matrix.xml \
+    vendor/dolby/vintf/dolby_framework_compatibility_matrix.xml \
     vendor/lineage/config/device_framework_matrix.xml
 
 DEVICE_MANIFEST_FILE := \

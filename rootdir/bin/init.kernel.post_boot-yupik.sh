@@ -148,14 +148,24 @@ ddr_type5="08"
 
 # Core control parameters for gold
 # Prefer CPU4 for isolation based on the thermal characteristics.
-echo 1 0 0 > /sys/devices/system/cpu/cpu4/core_ctl/not_preferred
-echo 2 > /sys/devices/system/cpu/cpu4/core_ctl/min_cpus
+echo 0 1 1 1 > /sys/devices/system/cpu/cpu0/core_ctl/not_preferred
+echo 1 > /sys/devices/system/cpu/cpu0/core_ctl/min_cpus
+echo 35 > /sys/devices/system/cpu/cpu0/core_ctl/busy_up_thres
+echo 15 > /sys/devices/system/cpu/cpu0/core_ctl/busy_down_thres
+echo 100 > /sys/devices/system/cpu/cpu0/core_ctl/offline_delay_ms
+echo 4 > /sys/devices/system/cpu/cpu0/core_ctl/task_thres
+
+# Core control parameters for gold
+# Prefer CPU4 for isolation based on the thermal characteristics.
+echo 1 1 1 > /sys/devices/system/cpu/cpu4/core_ctl/not_preferred
+echo 0 > /sys/devices/system/cpu/cpu4/core_ctl/min_cpus
 echo 60 > /sys/devices/system/cpu/cpu4/core_ctl/busy_up_thres
 echo 30 > /sys/devices/system/cpu/cpu4/core_ctl/busy_down_thres
 echo 100 > /sys/devices/system/cpu/cpu4/core_ctl/offline_delay_ms
 echo 3 > /sys/devices/system/cpu/cpu4/core_ctl/task_thres
 
 # Core control parameters for gold+
+echo 1 > /sys/devices/system/cpu/cpu7/core_ctl/not_preferred
 echo 0 > /sys/devices/system/cpu/cpu7/core_ctl/min_cpus
 echo 60 > /sys/devices/system/cpu/cpu7/core_ctl/busy_up_thres
 echo 30 > /sys/devices/system/cpu/cpu7/core_ctl/busy_down_thres
@@ -186,7 +196,9 @@ echo 1 > /proc/sys/kernel/sched_walt_rotate_big_tasks
 echo 0 > /proc/sys/kernel/sched_coloc_busy_hysteresis_enable_cpus
 
 # cpuset parameters
-echo 0-3 > /dev/cpuset/background/cpus
+echo 0-6 > /dev/cpuset/foreground/cpus
+echo 0-3 > /dev/cpuset/restricted/cpus
+echo 0-2 > /dev/cpuset/background/cpus
 echo 0-3 > /dev/cpuset/system-background/cpus
 
 # configure governor settings for silver cluster

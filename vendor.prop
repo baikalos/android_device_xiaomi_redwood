@@ -149,6 +149,17 @@ ro.bluetooth.a2dp_offload.supported=true
 camera.disable_zsl_mode=true
 ro.hardware.camera=xiaomi
 
+# Camera
+persist.vendor.camera.logInfoMask=false
+persist.vendor.camera.perflock.enable=0
+persist.vendor.camera.privapp.list=org.codeaurora.snapcam,com.android.camera,org.lineageos.snap,com.crdroid.faceunlock
+vendor.camera.aux.packagelist=com.android.camera,org.lineageos.aperture,org.lineageos.aperture.dev,com.crdroid.faceunlock
+ro.miui.build.region=IN
+ro.miui.notch=1
+ro.product.mod_device=redwood_global
+# Google Lens
+ro.com.google.lens.oem_camera_package=com.android.camera
+
 # Chipset
 ro.soc.manufacturer=QTI
 
@@ -281,3 +292,108 @@ vendor.sys.video.disable.ubwc=1
 
 # Zygote
 zygote.critical_window.minute=10
+
+#little
+#    9999999 - 0
+#    1651200 - 1
+#    1516800 - 2
+#    1324800 - 3
+#    1152000 - 4
+#    940800 - 5
+#    806400 - 6
+#    691200 - 7
+#    300000 - 8
+
+#big
+#    9999999 - 0
+#    2131200 - 1
+#    2054400 - 2
+#    1900800 - 3
+#    1651200 - 4
+#    1516800 - 5
+#    1344000 - 6
+#    1228800 - 7
+#    940800 - 8
+#    691200 - 9
+
+#plus
+#    9999999 - 0
+#    2400000 - 1
+#    2380800 - 2
+#    2208000 - 3
+#    2035200 - 4
+#    1862400 - 5
+#    1766400 - 6
+#    1516800 - 7
+#    1324800 - 8
+#    1056000 - 8
+#    806400 - 9
+
+#gpu
+
+
+persist.baikal.render.CPULittleClusterMaxFreq=0
+persist.baikal.render.CPUBigClusterMaxFreq=0
+persist.baikal.render.CPUBigPlusClusterMaxFreq=0
+persist.baikal.render.CPULittleClusterMinFreq=3
+persist.baikal.render.CPUBigClusterMinFreq=5
+persist.baikal.render.CPUBigPlusClusterMinFreq=7
+persist.baikal.render.GPUMinFreq=0
+persist.baikal.render.GPUMaxFreq=0
+
+persist.baikal.boost.CPULittleClusterMaxFreq=0
+persist.baikal.boost.CPUBigClusterMaxFreq=0
+persist.baikal.boost.CPUBigPlusClusterMaxFreq=0
+persist.baikal.boost.CPULittleClusterMinFreq=3
+persist.baikal.boost.CPUBigClusterMinFreq=5
+persist.baikal.boost.CPUBigPlusClusterMinFreq=7
+persist.baikal.boost.GPUMinFreq=2
+persist.baikal.boost.GPUMaxFreq=0
+
+persist.baikal.idle.CPULittleClusterMaxFreq=1
+persist.baikal.idle.CPUBigClusterMaxFreq=3
+persist.baikal.idle.CPUBigPlusClusterMaxFreq=5
+persist.baikal.idle.CPULittleClusterMinFreq=8
+persist.baikal.idle.CPUBigClusterMinFreq=9
+persist.baikal.idle.CPUBigPlusClusterMinFreq=9
+persist.baikal.idle.GPUMinFreq=2
+persist.baikal.idle.GPUMaxFreq=2
+
+persist.baikal.low.CPULittleClusterMaxFreq=1
+persist.baikal.low.CPUBigClusterMaxFreq=3
+persist.baikal.low.CPUBigPlusClusterMaxFreq=5
+persist.baikal.low.CPULittleClusterMinFreq=8
+persist.baikal.low.CPUBigClusterMinFreq=9
+persist.baikal.low.CPUBigPlusClusterMinFreq=9
+persist.baikal.low.GPUMinFreq=2
+persist.baikal.low.GPUMaxFreq=2
+
+persist.baikal.fixed.CPULittleClusterMaxFreq=0
+persist.baikal.fixed.CPUBigClusterMaxFreq=0
+persist.baikal.fixed.CPUBigPlusClusterMaxFreq=0
+persist.baikal.fixed.CPULittleClusterMinFreq=3
+persist.baikal.fixed.CPUBigClusterMinFreq=7
+persist.baikal.fixed.CPUBigPlusClusterMinFreq=8
+persist.baikal.fixed.GPUMinFreq=1
+persist.baikal.fixed.GPUMaxFreq=0
+
+persist.baikal.sustain.CPULittleClusterMaxFreq=2
+persist.baikal.sustain.CPUBigClusterMaxFreq=4
+persist.baikal.sustain.CPUBigPlusClusterMaxFreq=7
+persist.baikal.sustain.CPULittleClusterMinFreq=5
+persist.baikal.sustain.CPUBigClusterMinFreq=8
+persist.baikal.sustain.CPUBigPlusClusterMinFreq=8
+persist.baikal.sustain.GPUMinFreq=2
+persist.baikal.sustain.GPUMaxFreq=1
+
+persist.baikal.inter.CPULittleClusterMaxFreq=0
+persist.baikal.inter.CPUBigClusterMaxFreq=0
+persist.baikal.inter.CPUBigPlusClusterMaxFreq=0
+persist.baikal.inter.CPULittleClusterMinFreq=8
+persist.baikal.inter.CPUBigClusterMinFreq=9
+persist.baikal.inter.CPUBigPlusClusterMinFreq=9
+persist.baikal.inter.GPUMinFreq=2
+persist.baikal.inter.GPUMaxFreq=0
+persist.baikal.inter.CPULittleClusterCoreCtl=1
+persist.baikal.inter.CPUBigClusterCoreCtl=1
+persist.baikal.inter.CPUBigPlusClusterCoreCtl=1
