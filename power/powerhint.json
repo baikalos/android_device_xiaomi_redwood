@@ -335,6 +335,7 @@
     { "PowerHint": "SUSTAINED_PERFORMANCE", "Node": "CPULittleClusterMinFreq", "Duration": 0, "Value": "940800", "OverrideProperty": "persist.baikal.sustain.CPULittleClusterMinFreq" },
     { "PowerHint": "SUSTAINED_PERFORMANCE", "Node": "CPUBigClusterMinFreq", "Duration": 0, "Value": "940800", "OverrideProperty": "persist.baikal.sustain.CPUBigClusterMinFreq" },
     { "PowerHint": "SUSTAINED_PERFORMANCE", "Node": "CPUBigPlusClusterMinFreq", "Duration": 0, "Value": "1056000", "OverrideProperty": "persist.baikal.sustain.CPUBigPlusClusterMinFreq" },
+    { "PowerHint": "SUSTAINED_PERFORMANCE", "Node": "UclampTAMin", "Duration": 0, "Value": "30" },
 
     { "PowerHint": "SUSTAINED_PERFORMANCE", "Node": "GPUMinFreq", "Duration": 0, "Value": "2", "OverrideProperty": "persist.baikal.sustain.GPUMinFreq" },
     { "PowerHint": "SUSTAINED_PERFORMANCE", "Node": "GPUMaxFreq", "Duration": 0, "Value": "1", "OverrideProperty": "persist.baikal.sustain.GPUMaxFreq" },
@@ -353,6 +354,8 @@
     { "PowerHint": "FIXED_PERFORMANCE", "Node": "CPULittleClusterMinFreq", "Duration": 0, "Value": "1324800", "OverrideProperty": "persist.baikal.fixed.CPULittleClusterMinFreq" },
     { "PowerHint": "FIXED_PERFORMANCE", "Node": "CPUBigClusterMinFreq", "Duration": 0, "Value": "1228800", "OverrideProperty": "persist.baikal.fixed.CPUBigClusterMinFreq" },
     { "PowerHint": "FIXED_PERFORMANCE", "Node": "CPUBigPlusClusterMinFreq", "Duration": 0, "Value": "1056000", "OverrideProperty": "persist.baikal.fixed.CPUBigPlusClusterMinFreq" },
+    { "PowerHint": "FIXED_PERFORMANCE", "Node": "UclampTAMin", "Duration": 0, "Value": "50" },
+
 
     { "PowerHint": "FIXED_PERFORMANCE", "Node": "GPUMinFreq", "Duration": 0, "Value": "1", "OverrideProperty": "persist.baikal.fixed.GPUMinFreq" },
     { "PowerHint": "FIXED_PERFORMANCE", "Node": "GPUMaxFreq", "Duration": 0, "Value": "0", "OverrideProperty": "persist.baikal.fixed.GPUMaxFreq" },
