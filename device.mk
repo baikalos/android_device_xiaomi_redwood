@@ -138,7 +138,9 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service_64 \
     vendor.qti.hardware.camera.device@1.0.vendor \
-    vendor.qti.hardware.camera.postproc@1.0.vendor
+    vendor.qti.hardware.camera.postproc@1.0.vendor \
+    libcamera_metadata \
+    libion
 
 PRODUCT_PACKAGES += \
     libMegviiFacepp-0.5.2 \
@@ -255,9 +257,18 @@ PRODUCT_PACKAGES += \
     android.hardware.health@2.1-impl-qti \
     android.hardware.health@2.1-service
 
+
+# HIDL
 PRODUCT_PACKAGES += \
+    android.hidl.base@1.0 \
+    android.hidl.base@1.0.vendor \
+    libhidltransport \
     libhidltransport.vendor \
     libhwbinder.vendor
+
+#PRODUCT_PACKAGES += \
+#    libhidltransport.vendor \
+#    libhwbinder.vendor
 
 # HotwordEnrollement
 PRODUCT_COPY_FILES += \
@@ -585,3 +596,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_BOOT_JARS += \
     WfdCommon
+
+PRODUCT_PACKAGES += \
+    XiaomiParts
+
