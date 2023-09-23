@@ -146,17 +146,14 @@ persist.vendor.qcom.bluetooth.twsp_state.enabled=false
 ro.bluetooth.a2dp_offload.supported=true
 
 # Camera
-camera.disable_zsl_mode=true
 ro.hardware.camera=xiaomi
-
-# Camera
+camera.disable_zsl_mode=1
 persist.vendor.camera.logInfoMask=false
 persist.vendor.camera.perflock.enable=0
-persist.vendor.camera.privapp.list=org.codeaurora.snapcam,com.android.camera,org.lineageos.snap,com.crdroid.faceunlock
-vendor.camera.aux.packagelist=com.android.camera,org.lineageos.aperture,org.lineageos.aperture.dev,com.crdroid.faceunlock
-ro.miui.build.region=IN
+persist.vendor.camera.privapp.list=android,com.android.camera,com.crdroid.faceunlock
+vendor.camera.aux.packagelist=android,com.android.camera,org.lineageos.aperture,com.crdroid.faceunlock
+#ro.miui.build.region=IN
 ro.miui.notch=1
-ro.product.mod_device=redwood_global
 # Google Lens
 ro.com.google.lens.oem_camera_package=com.android.camera
 
