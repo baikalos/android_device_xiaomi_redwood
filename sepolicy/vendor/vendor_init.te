@@ -5,3 +5,8 @@ allow vendor_init unlabeled:{ dir file } { getattr relabelfrom };
 
 allow vendor_init proc_sysctl_autogroup:file w_file_perms;
 allow vendor_init proc_sysctl_schedboost:file w_file_perms;
+
+allow vendor_init system_data_file:dir { create };
+allow vendor_init system_data_file:file w_file_perms;
+
+
