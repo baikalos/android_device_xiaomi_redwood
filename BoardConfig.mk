@@ -113,6 +113,10 @@ BOARD_KERNEL_CMDLINE += pcie_ports=compat
 BOARD_KERNEL_CMDLINE += iptable_raw.raw_before_defrag=1
 BOARD_KERNEL_CMDLINE += ip6table_raw.raw_before_defrag=1
 
+# Media
+#TARGET_USES_ION := true
+#TARGET_DISABLED_UBWC := true
+
 # Kernel modules
 BOOT_KERNEL_MODULES := \
     goodix_core.ko \
@@ -223,6 +227,9 @@ WIFI_HIDL_FEATURE_AWARE := true
 WIFI_HIDL_FEATURE_DUAL_INTERFACE := true
 WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 WPA_SUPPLICANT_VERSION := VER_0_8_X
+
+#Camera
+TARGET_USES_MIUI_CAMERA := true
 
 # Inherit proprietary blobs
 include vendor/xiaomi/redwood/BoardConfigVendor.mk
