@@ -2,9 +2,9 @@ binder_call(priv_app, vendor_hal_camerapostproc_xiaomi_hwservice)
 
 allow priv_app vendor_hal_camerapostproc_xiaomi_hwservice:hwservice_manager find;
 
-dontaudit priv_app bt_firmware_file:filesystem getattr;
-dontaudit priv_app firmware_file:filesystem getattr;
-dontaudit priv_app mnt_vendor_file:dir search;
+allow priv_app bt_firmware_file:filesystem getattr;
+allow priv_app firmware_file:filesystem getattr;
+allow priv_app mnt_vendor_file:dir search;
 
 get_prop(priv_app, vendor_deviceid_prop)
 get_prop(priv_app, vendor_camera_sensor_prop)
