@@ -118,11 +118,10 @@ BOARD_KERNEL_CMDLINE += ip6table_raw.raw_before_defrag=1
 #TARGET_DISABLED_UBWC := true
 
 # Kernel modules
-BOOT_KERNEL_MODULES := \
-    goodix_core.ko \
-    hwid.ko \
-    msm_drm.ko \
-    xiaomi_touch.ko
+#BOOT_KERNEL_MODULES := \
+#    goodix_core.ko \
+#    xiaomi_touch.ko
+
 BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(BOOT_KERNEL_MODULES)
 
 # Partitions
@@ -230,6 +229,14 @@ WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 #Camera
 TARGET_USES_MIUI_CAMERA := true
+#TARGET_CAMERA_NEEDS_CLIENT_INFO_LIB := true
+TARGET_CAMERA_USES_NEWER_HIDL_OVERRIDE_FORMAT := true
+
+TARGET_ALTERNATIVE_FUTEX_WAITERS := true
+TARGET_CAMERA_OVERRIDE_FORMAT_FROM_RESERVED := true
+
+# Display
+TARGET_GRALLOC_HANDLE_HAS_RESERVED_SIZE := true
 
 # Inherit proprietary blobs
 include vendor/xiaomi/redwood/BoardConfigVendor.mk
