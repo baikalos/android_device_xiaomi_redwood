@@ -16,7 +16,6 @@ vendor.post_boot.parsed=1s
 
 # Graphics
 debug.sf.disable_backpressure=1
-debug.sf.enable_hwc_vds=0
 debug.hwui.use_hint_manager=true
 debug.hwui.target_cpu_time_percent=20
 

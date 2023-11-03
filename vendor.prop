@@ -230,6 +230,7 @@ vendor.display.enable_allow_idle_fallback=1
 vendor.display.disable_idle_time_video=1
 vendor.display.disable_idle_time_hdr=1
 debug.sf.enable_egl_image_tracker=1
+vendor.display.vds_allow_hwc=1
 vendor.gralloc.disable_ubwc=0
 debug.sdm.support_writeback=0
 ro.surface_flinger.game_default_frame_rate_override=120
