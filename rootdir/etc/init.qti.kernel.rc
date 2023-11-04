@@ -40,6 +40,8 @@ on init
     write /dev/cpuctl/background/cpu.uclamp.colocate 0
     write /dev/cpuctl/foreground/cpu.uclamp.colocate 0
     write /dev/cpuctl/top-app/cpu.uclamp.colocate 1
+    write /dev/cpuctl/top-app/cpu.uclamp.latency_sensitive 1
+
 
 on early-boot
     # Allow subsystem (modem etc) debugging

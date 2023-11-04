@@ -45,7 +45,7 @@ function configure_zram_parameters() {
 	if [ $RamSizeGB -le 2 ]; then
 		let zRamSizeMB="( $RamSizeGB * 1024 ) * 3 / 4"
 	else
-		let zRamSizeMB="( $RamSizeGB * 1024 ) / 2"
+		let zRamSizeMB="( $RamSizeGB * 1024 ) / 4"
 	fi
 
 	# use MB avoid 32 bit overflow
@@ -54,6 +54,8 @@ function configure_zram_parameters() {
 	fi
 
 	if [ "$low_ram" == "true" ]; then
+		echo lz4 > /sys/block/zram0/comp_algorithm
+    else
 		echo lz4 > /sys/block/zram0/comp_algorithm
 	fi
 
@@ -125,7 +127,7 @@ function configure_memory_parameters() {
 
 	configure_zram_parameters
 	configure_read_ahead_kb_values
-	echo 100 > /proc/sys/vm/swappiness
+	echo 60 > /proc/sys/vm/swappiness
 
         # Disable wsf  beacause we are using efk.
         # wsf Range : 1..1000. So set to bare minimum value 1.
