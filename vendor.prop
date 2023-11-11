@@ -290,6 +290,8 @@ vendor.sys.video.disable.ubwc=1
 # Zygote
 zygote.critical_window.minute=10
 
+baikalos.fuse.passthrough=true
+
 #little
 #    9999999 - 0
 #    1651200 - 1
@@ -327,7 +329,6 @@ zygote.critical_window.minute=10
 #    806400 - 9
 
 #gpu
-
 
 persist.baikal.render.CPULittleClusterMaxFreq=0
 persist.baikal.render.CPUBigClusterMaxFreq=0

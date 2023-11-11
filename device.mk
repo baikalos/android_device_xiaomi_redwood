@@ -26,6 +26,10 @@ $(call inherit-product, vendor/xiaomi/redwood/redwood-vendor.mk)
 # Setup dalvik vm configs
 $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 
+# Use FUSE passthrough
+PRODUCT_PRODUCT_PROPERTIES += \
+    persist.sys.fuse.passthrough.enable=true
+
 # API
 PRODUCT_SHIPPING_API_LEVEL := 31
 
