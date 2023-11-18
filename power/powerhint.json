@@ -128,6 +128,7 @@
         "30",
         "20",
         "10",
+        "1",
         "0"
       ],
       "ResetOnInit": true
@@ -270,6 +271,28 @@
       "ResetOnInit": true
     },
     {
+      "Name": "sched_downmigrate",
+      "Path": "/proc/sys/kernel/sched_downmigrate",
+      "Values": [
+        "65 75",
+        "75 85",
+        "95 95"
+      ],
+      "DefaultIndex": 1,
+      "ResetOnInit": true
+    },
+    {
+      "Name": "sched_upmigrate",
+      "Path": "/proc/sys/kernel/sched_upmigrate",
+      "Values": [
+        "75 85",
+        "85 95",
+        "99 99"
+      ],
+      "DefaultIndex": 1,
+      "ResetOnInit": true
+    },
+    {
       "Name": "PowerHALMainState",
       "Path": "vendor.powerhal.state",
       "Values": [
@@ -333,11 +356,14 @@
     { "PowerHint": "INTERACTIVE", "Node": "CPULittleClusterMinFreq", "Duration": 0, "Value": "300000", "OverrideProperty": "persist.baikal.inter.CPULittleClusterMinFreq" },
     { "PowerHint": "INTERACTIVE", "Node": "CPUBigClusterMinFreq", "Duration": 0, "Value": "691200", "OverrideProperty": "persist.baikal.inter.CPUBigClusterMinFreq" },
     { "PowerHint": "INTERACTIVE", "Node": "CPUBigPlusClusterMinFreq", "Duration": 0, "Value": "806400", "OverrideProperty": "persist.baikal.inter.CPUBigPlusClusterMinFreq" },
+    { "PowerHint": "INTERACTIVE", "Node": "UclampTAMin", "Duration": 0, "Value": "20" },
     { "PowerHint": "INTERACTIVE", "Node": "GPUMinFreq", "Duration": 0, "Value": "2", "OverrideProperty": "persist.baikal.inter.GPUMinFreq" },
     { "PowerHint": "INTERACTIVE", "Node": "GPUMaxFreq", "Duration": 0, "Value": "0", "OverrideProperty": "persist.baikal.inter.GPUMaxFreq" },
     { "PowerHint": "INTERACTIVE", "Node": "CPULittleClusterCoreCtl", "Duration": 0, "Value": "1", "OverrideProperty": "persist.baikal.inter.CPULittleClusterCoreCtl" },
     { "PowerHint": "INTERACTIVE", "Node": "CPUBigClusterCoreCtl", "Duration": 0, "Value": "1", "OverrideProperty": "persist.baikal.inter.CPUBigClusterCoreCtl" },
     { "PowerHint": "INTERACTIVE", "Node": "CPUBigPlusClusterCoreCtl", "Duration": 0, "Value": "1", "OverrideProperty": "persist.baikal.inter.CPUBigPlusClusterCoreCtl" },
+    { "PowerHint": "INTERACTIVE", "Node": "sched_downmigrate", "Duration": 0, "Value": "75 85"},
+    { "PowerHint": "INTERACTIVE", "Node": "sched_upmigrate", "Duration": 0, "Value": "85 95"},
 
     { "PowerHint": "SUSTAINED_PERFORMANCE", "Node": "PowerHALMainState", "Duration": 0, "Value": "SUSTAINED_PERFORMANCE" },
 
@@ -357,6 +383,8 @@
     { "PowerHint": "SUSTAINED_PERFORMANCE", "Node": "CPUBigPlusClusterCoreCtl", "Duration": 0, "Value": "0" },
     { "PowerHint": "SUSTAINED_PERFORMANCE", "Node": "PMQoSCpuDmaLatency", "Duration": 0, "Value": "0" },
 
+    { "PowerHint": "SUSTAINED_PERFORMANCE", "Node": "sched_downmigrate", "Duration": 0, "Value": "65 75"},
+    { "PowerHint": "SUSTAINED_PERFORMANCE", "Node": "sched_upmigrate", "Duration": 0, "Value": "75 85"},
 
     { "PowerHint": "FIXED_PERFORMANCE", "Node": "PowerHALMainState", "Duration": 0, "Value": "FIXED_PERFORMANCE" },
 
@@ -377,6 +405,9 @@
     { "PowerHint": "FIXED_PERFORMANCE", "Node": "CPUBigPlusClusterCoreCtl", "Duration": 0, "Value": "0" },
     { "PowerHint": "FIXED_PERFORMANCE", "Node": "PMQoSCpuDmaLatency", "Duration": 0, "Value": "0" },
 
+    { "PowerHint": "FIXED_PERFORMANCE", "Node": "sched_downmigrate", "Duration": 0, "Value": "65 75"},
+    { "PowerHint": "FIXED_PERFORMANCE", "Node": "sched_upmigrate", "Duration": 0, "Value": "75 85"},
+
 
     { "PowerHint": "LOW_POWER", "Node": "PowerHALMainState", "Duration": 0, "Value": "LOW_POWER" },
 
@@ -395,6 +426,9 @@
     { "PowerHint": "LOW_POWER", "Node": "CPUBigClusterCoreCtl", "Duration": 0, "Value": "1" },
     { "PowerHint": "LOW_POWER", "Node": "CPUBigPlusClusterCoreCtl", "Duration": 0, "Value": "1" },
 
+    { "PowerHint": "LOW_POWER", "Node": "sched_downmigrate", "Duration": 0, "Value": "95 95"},
+    { "PowerHint": "LOW_POWER", "Node": "sched_upmigrate", "Duration": 0, "Value": "99 99"},
+
     { "PowerHint": "DEVICE_IDLE", "Node": "PowerHALMainState", "Duration": 0, "Value": "DEVICE_IDLE" },
 
     { "PowerHint": "DEVICE_IDLE", "Node": "CPULittleClusterMaxFreq", "Duration": 0, "Value": "1651200", "OverrideProperty": "persist.baikal.idle.CPULittleClusterMaxFreq" },
@@ -411,6 +445,9 @@
     { "PowerHint": "DEVICE_IDLE", "Node": "CPULittleClusterCoreCtl", "Duration": 0, "Value": "1" },
     { "PowerHint": "DEVICE_IDLE", "Node": "CPUBigClusterCoreCtl", "Duration": 0, "Value": "1" },
     { "PowerHint": "DEVICE_IDLE", "Node": "CPUBigPlusClusterCoreCtl", "Duration": 0, "Value": "1" },
+
+    { "PowerHint": "DEVICE_IDLE", "Node": "sched_downmigrate", "Duration": 0, "Value": "95 95"},
+    { "PowerHint": "DEVICE_IDLE", "Node": "sched_upmigrate", "Duration": 0, "Value": "99 99"},
 
     { "PowerHint": "INTERACTION", "Node": "PowerHALMainState", "Duration": 0, "Value": "INTERACTION" },
     { "PowerHint": "INTERACTION", "Node": "PMKeepAwake", "Duration": 0, "Value": "1" },
@@ -437,6 +474,9 @@
     { "PowerHint": "INTERACTION", "Node": "CPUBWMinFreq", "Duration": 0, "Value": "7110" },
     { "PowerHint": "INTERACTION", "Node": "LLCCBWMinFreq", "Duration": 0, "Value": "5931" },
 
+    { "PowerHint": "INTERACTION", "Node": "sched_downmigrate", "Duration": 0, "Value": "75 85"},
+    { "PowerHint": "INTERACTION", "Node": "sched_upmigrate", "Duration": 0, "Value": "85 95"},
+
     { "PowerHint": "LAUNCH", "Node": "PowerHALMainState", "Duration": 3000, "Value": "LAUNCH" },
     { "PowerHint": "LAUNCH", "Node": "PMKeepAwake", "Duration": 0, "Value": "1" },
 
@@ -457,6 +497,9 @@
     { "PowerHint": "LAUNCH", "Node": "CPUBigClusterCoreCtl", "Duration": 0, "Value": "0" },
     { "PowerHint": "LAUNCH", "Node": "CPUBigPlusClusterCoreCtl", "Duration": 0, "Value": "0" },
 
+    { "PowerHint": "LAUNCH", "Node": "sched_downmigrate", "Duration": 0, "Value": "75 85"},
+    { "PowerHint": "LAUNCH", "Node": "sched_upmigrate", "Duration": 0, "Value": "85 95"},
+
     { "PowerHint": "EXPENSIVE_RENDERING", "Node": "PowerHALRenderingState", "Duration": 0, "Value": "EXPENSIVE_RENDERING" },
     { "PowerHint": "EXPENSIVE_RENDERING", "Node": "PowerHALMainState", "Duration": 0, "Value": "EXPENSIVE_RENDERING" },
     { "PowerHint": "EXPENSIVE_RENDERING", "Node": "PMKeepAwake", "Duration": 0, "Value": "1" },
@@ -472,9 +515,13 @@
     { "PowerHint": "EXPENSIVE_RENDERING", "Node": "GPUMinFreq", "Duration": 0, "Value": "0", "OverrideProperty": "persist.baikal.render.GPUMinFreq" },
     { "PowerHint": "EXPENSIVE_RENDERING", "Node": "GPUMaxFreq", "Duration": 0, "Value": "0", "OverrideProperty": "persist.baikal.render.GPUMaxFreq" },
 
+    { "PowerHint": "EXPENSIVE_RENDERING", "Node": "UclampTAMin", "Duration": 0, "Value": "20" },
     { "PowerHint": "EXPENSIVE_RENDERING", "Node": "CPULittleClusterCoreCtl", "Duration": 0, "Value": "0" },
     { "PowerHint": "EXPENSIVE_RENDERING", "Node": "CPUBigClusterCoreCtl", "Duration": 0, "Value": "0" },
     { "PowerHint": "EXPENSIVE_RENDERING", "Node": "CPUBigPlusClusterCoreCtl", "Duration": 0, "Value": "0" },
+
+    { "PowerHint": "EXPENSIVE_RENDERING", "Node": "sched_downmigrate", "Duration": 0, "Value": "75 85"},
+    { "PowerHint": "EXPENSIVE_RENDERING", "Node": "sched_upmigrate", "Duration": 0, "Value": "85 95"},
 
     { "PowerHint": "AUDIO_STREAMING_LOW_LATENCY", "Node": "PowerHALAudioState","Duration": 0,"Value": "AUDIO_STREAMING_LOW_LATENCY"},
     { "PowerHint": "AUDIO_STREAMING_LOW_LATENCY", "Node": "CPULittleClusterCoreCtl", "Duration": 0, "Value": "0" },
