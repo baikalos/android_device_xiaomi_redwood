@@ -41,6 +41,10 @@
     <allow-in-power-save package="com.qualcomm.qti.cne" />
     <allow-in-power-save package="com.qualcomm.qti.poweroffalarm" />
     <allow-in-power-save package="com.google.android.ims" />
+    <allow-in-power-save package="com.google.android.ims" />
+    <allow-in-power-save package="vendor.qti.iwlan" />
+
+
 
     <!-- These telephony applications need access to non-[System]SDK APIs -->
     <hidden-api-whitelisted-app package="com.qualcomm.qcrilmsgtunnel" />
