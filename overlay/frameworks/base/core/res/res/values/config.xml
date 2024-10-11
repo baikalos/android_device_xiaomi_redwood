@@ -123,6 +123,8 @@
     -->
     <bool name="config_powerDecoupleInteractiveModeFromDisplay">false</bool>
 
+    <bool name="config_enableWifiDisplay">true</bool>
+
     <!-- Flag specifying whether VoLTE is available on device -->
     <bool name="config_device_volte_available">true</bool>
 
@@ -264,7 +266,7 @@
 
          This array should be equal in size to config_screenBrightnessBacklight. -->
     <integer-array name="config_screenBrightnessBacklight">
-        <item>1</item>
+        <item>3</item>
         <item>5</item>
         <item>10</item>
         <item>15</item>
@@ -287,8 +289,8 @@
     </integer-array>
 
     <integer-array name="config_screenBrightnessBacklight1">
-        <item>1</item>
-        <item>1</item>
+        <item>3</item>
+        <item>3</item>
         <item>5</item>
         <item>7</item>
         <item>15</item>
@@ -310,7 +312,7 @@
     </integer-array>
 
     <integer-array name="config_screenBrightnessBacklight2">
-        <item>1</item>
+        <item>5</item>
         <item>10</item>
         <item>15</item>
         <item>20</item>
@@ -574,16 +576,13 @@
 
     <!-- Default list of files pinned by the Pinner Service -->
     <string-array translatable="false" name="config_defaultPinnerServiceFiles">
-        <!-- item>"/system/framework/framework.jar"</item>
+        <item>"/system/framework/framework.jar"</item>
         <item>"/system/framework/services.jar"</item>
         <item>"/apex/com.android.art/javalib/core-oj.jar"</item>
         <item>"/apex/com.android.art/javalib/core-libart.jar"</item>
         <item>"/system_ext/priv-app/SystemUI/SystemUI.apk"</item>
-        <item>"/system/bin/surfaceflinger"</item -->
+        <item>"/system/bin/surfaceflinger"</item>
     </string-array>
-
-    <!-- Should the pinner service pin the Home application? -->
-    <bool name="config_pinnerHomeApp">false</bool>
 
     <!-- Enable doze mode
          ComponentName of a dream to show whenever the system would otherwise have gone to sleep. -->
@@ -614,15 +613,12 @@
     <!-- Doze: should the TYPE_PICK_UP_GESTURE sensor be used as a pulse signal. -->
     <bool name="config_dozePulsePickup">true</bool>
 
-    <!-- If true, the display will be shifted around in ambient mode. -->
-    <bool name="config_enableBurnInProtection">true</bool>
-
     <!-- Indicate available ColorDisplayManager.COLOR_MODE_xxx. -->
     <integer-array name="config_availableColorModes">
         <item>0</item> <!-- COLOR_MODE_NATURAL   -->
         <item>1</item> <!-- COLOR_MODE_BOOSTED   -->
         <item>2</item> <!-- COLOR_MODE_SATURATED -->
-        <item>3</item> <!-- COLOR_MODE_AUTOMATIC -->
+        <!-- item>3</item --> <!-- COLOR_MODE_AUTOMATIC -->
     </integer-array>
 
     <!-- Color mode to use when accessibility transforms are enabled. This color mode must be
@@ -645,13 +641,13 @@
         <item>0</item> <!-- COLOR_MODE_NATURAL   -->
         <item>1</item> <!-- COLOR_MODE_BOOSTED   -->
         <item>2</item> <!-- COLOR_MODE_SATURATED -->
-        <item>3</item> <!-- COLOR_MODE_AUTOMATIC -->
+        <!-- item>3</item --> <!-- COLOR_MODE_AUTOMATIC -->
     </integer-array>
     <integer-array name="config_displayCompositionColorSpaces">
         <item>0</item> <!-- COLOR_MODE_DEFAULT    -->
         <item>0</item> <!-- COLOR_MODE_DEFAULT    -->
         <item>0</item> <!-- COLOR_MODE_DEFAULT    -->
-        <item>9</item> <!-- COLOR_MODE_DISPLAY_P3 -->
+        <!-- item>9</item --> <!-- COLOR_MODE_DISPLAY_P3 -->
     </integer-array>
 
     <!-- Whether or not wcg mode should be enabled on this device -->
@@ -667,5 +663,11 @@
     <bool name="config_bluetooth_hfp_inband_ringing_support">true</bool>
 
     <bool name="config_validLayoutRequesters">false</bool>
+
+    <!-- The default value for whether head tracking for
+         spatial audio is enabled for a newly connected audio device -->
+    <bool name="config_spatial_audio_head_tracking_enabled_default">true</bool>
+
+    <bool name="config_certificateSpooferAvailable">false</bool>
 
 </resources>
