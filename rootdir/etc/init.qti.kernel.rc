@@ -52,12 +52,12 @@ on early-boot
 
 on boot
     # Set the io-scheduler to bfq on all mq support devices
-    write /sys/block/sda/queue/scheduler bfq
-    write /sys/block/sdb/queue/scheduler bfq
-    write /sys/block/sdc/queue/scheduler bfq
-    write /sys/block/sdd/queue/scheduler bfq
-    write /sys/block/sde/queue/scheduler bfq
-    write /sys/block/sdf/queue/scheduler bfq
+    write /sys/block/sda/queue/scheduler none
+    write /sys/block/sdb/queue/scheduler none
+    write /sys/block/sdc/queue/scheduler none
+    write /sys/block/sdd/queue/scheduler none
+    write /sys/block/sde/queue/scheduler none
+    write /sys/block/sdf/queue/scheduler none
 
     # Update io-scheduler tunables
     write /sys/block/sda/queue/iosched/slice_idle 0
