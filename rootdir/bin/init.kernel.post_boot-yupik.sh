@@ -30,54 +30,6 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #=============================================================================
 
-function configure_zram_parameters() {
-	MemTotalStr=`cat /proc/meminfo | grep MemTotal`
-	MemTotal=${MemTotalStr:16:8}
-
-	low_ram=`getprop ro.config.low_ram`
-
-	# Zram disk - 75% for Go and < 2GB devices .
-	# For >2GB Non-Go devices, size = 50% of RAM size. Limit the size to 4GB.
-	# And enable lz4 zram compression for Go targets.
-
-	let RamSizeGB="( $MemTotal / 1048576 ) + 1"
-	diskSizeUnit=M
-	if [ $RamSizeGB -le 2 ]; then
-		let zRamSizeMB="( $RamSizeGB * 1024 ) * 3 / 4"
-	else
-		let zRamSizeMB="( $RamSizeGB * 1024 ) / 4"
-	fi
-
-	# use MB avoid 32 bit overflow
-	if [ $zRamSizeMB -gt 4096 ]; then
-		let zRamSizeMB=4096
-	fi
-
-	if [ "$low_ram" == "true" ]; then
-		echo lz4 > /sys/block/zram0/comp_algorithm
-    else
-		echo lz4 > /sys/block/zram0/comp_algorithm
-	fi
-
-	if [ -f /sys/block/zram0/disksize ]; then
-		if [ -f /sys/block/zram0/use_dedup ]; then
-			echo 1 > /sys/block/zram0/use_dedup
-		fi
-		echo "$zRamSizeMB""$diskSizeUnit" > /sys/block/zram0/disksize
-
-		# ZRAM may use more memory than it saves if SLAB_STORE_USER
-		# debug option is enabled.
-		if [ -e /sys/kernel/slab/zs_handle ]; then
-			echo 0 > /sys/kernel/slab/zs_handle/store_user
-		fi
-		if [ -e /sys/kernel/slab/zspage ]; then
-			echo 0 > /sys/kernel/slab/zspage/store_user
-		fi
-
-		mkswap /dev/block/zram0
-		swapon /dev/block/zram0 -p 32758
-	fi
-}
 
 function configure_read_ahead_kb_values() {
 	MemTotalStr=`cat /proc/meminfo | grep MemTotal`
@@ -125,7 +77,6 @@ function configure_memory_parameters() {
 
 	ProductName=`getprop ro.product.name`
 
-	configure_zram_parameters
 	configure_read_ahead_kb_values
 	echo 60 > /proc/sys/vm/swappiness
 
@@ -188,20 +139,21 @@ echo 100 > /sys/devices/system/cpu/cpu7/core_ctl/offline_delay_ms
 echo 0 > /sys/devices/system/cpu/cpu0/core_ctl/enable
 
 # Setting b.L scheduler parameters
-echo 65 85 > /proc/sys/kernel/sched_downmigrate
-echo 71 95 > /proc/sys/kernel/sched_upmigrate
-echo 65 85 > /proc/sys/kernel/sched_downmigrate
-echo 71 95 > /proc/sys/kernel/sched_upmigrate
+echo 75 85 > /proc/sys/kernel/sched_downmigrate
+echo 85 95 > /proc/sys/kernel/sched_upmigrate
+echo 75 85 > /proc/sys/kernel/sched_downmigrate
+echo 85 95 > /proc/sys/kernel/sched_upmigrate
 echo 100 > /proc/sys/kernel/sched_group_upmigrate
-echo 85 > /proc/sys/kernel/sched_group_downmigrate
+echo 99 > /proc/sys/kernel/sched_group_downmigrate
 echo 100 > /proc/sys/kernel/sched_group_upmigrate
-echo 85 > /proc/sys/kernel/sched_group_downmigrate
-#echo 1 > /proc/sys/kernel/sched_walt_rotate_big_tasks
+echo 99 > /proc/sys/kernel/sched_group_downmigrate
+echo 1 > /proc/sys/kernel/sched_walt_rotate_big_tasks
 
 
 echo 0 > /proc/sys/kernel/sched_coloc_busy_hysteresis_enable_cpus
 
 # cpuset parameters
+echo 0-7 > /dev/cpuset/top-app/cpus
 echo 0-6 > /dev/cpuset/foreground/cpus
 echo 0-3 > /dev/cpuset/restricted/cpus
 echo 0-1 > /dev/cpuset/background/cpus
@@ -369,7 +321,8 @@ do
 done
 
 # set s2idle as default suspend mode
-echo s2idle > /sys/power/mem_sleep
+# echo s2idle > /sys/power/mem_sleep
+# echo deep > /sys/power/mem_sleep
 
 configure_memory_parameters
 
