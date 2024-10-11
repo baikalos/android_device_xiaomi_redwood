@@ -48,5 +48,5 @@ persist.vendor.sensors.enable.mag_filter=true
 persist.debug.wfd.enable=1
 
 # Camera
-log.tag.CHIUSECASE=ERROR
+log.tag.CHIUSECASE=INFO
 persist.vendor.camera.xiaomi.dirty.num=0
