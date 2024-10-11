@@ -152,6 +152,15 @@ on boot
     chmod 0664 /sys/devices/system/cpu/cpu4/core_ctl/enable
     chmod 0664 /sys/devices/system/cpu/cpu7/core_ctl/enable
 
+
+    chown system system /sys/module/sched/parameters/sched_load_boost_silver
+    chown system system /sys/module/sched/parameters/sched_load_boost_gold
+    chown system system /sys/module/sched/parameters/sched_load_boost_plus
+
+    chmod 0664 /sys/module/sched/parameters/sched_load_boost_silver
+    chmod 0664 /sys/module/sched/parameters/sched_load_boost_gold
+    chmod 0664 /sys/module/sched/parameters/sched_load_boost_plus
+
     write /sys/block/sda/queue/wbt_lat_usec 75000
 
 on init && property:ro.boot.mode=charger
