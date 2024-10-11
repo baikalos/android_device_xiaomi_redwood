@@ -134,6 +134,15 @@
       "ResetOnInit": true
     },
     {
+      "Name": "UclampTALatency",
+      "Path": "/dev/cpuctl/top-app/cpu.uclamp.latency_sensitive",
+      "Values": [
+        "1",
+        "0"
+      ],
+      "ResetOnInit": true
+    },
+    {
       "Name": "CPULittleClusterCoreCtl",
       "Path": "/sys/devices/system/cpu/cpu0/core_ctl/enable",
       "Values": [
@@ -293,6 +302,75 @@
       "ResetOnInit": true
     },
     {
+      "Name": "TAPlusBoost",
+      "Path": "/sys/module/sched/parameters/sched_load_boost_plus",
+      "Values": [
+    	"100",
+    	"75",
+    	"50",
+    	"25",
+    	"15",
+    	"10",
+    	"5",
+    	"0",
+    	"-5",
+    	"-10",
+    	"-15",
+    	"-25",
+    	"-50",
+    	"-75",
+    	"-100"
+      ],
+      "DefaultIndex": 7,
+      "ResetOnInit": true
+    },
+    {
+      "Name": "TAGoldBoost",
+      "Path": "/sys/module/sched/parameters/sched_load_boost_gold",
+      "Values": [
+    	"100",
+    	"75",
+    	"50",
+    	"25",
+    	"15",
+    	"10",
+    	"5",
+    	"0",
+    	"-5",
+    	"-10",
+    	"-15",
+    	"-25",
+    	"-50",
+    	"-75",
+    	"-100"
+      ],
+      "DefaultIndex": 7,
+      "ResetOnInit": true
+    },
+    {
+      "Name": "TASilverBoost",
+      "Path": "/sys/module/sched/parameters/sched_load_boost_silver",
+      "Values": [
+    	"100",
+    	"75",
+    	"50",
+    	"25",
+    	"15",
+    	"10",
+    	"5",
+    	"0",
+    	"-5",
+    	"-10",
+    	"-15",
+    	"-25",
+    	"-50",
+    	"-75",
+    	"-100"
+      ],
+      "DefaultIndex": 7,
+      "ResetOnInit": true
+    },
+    {
       "Name": "PowerHALMainState",
       "Path": "vendor.powerhal.state",
       "Values": [
@@ -338,6 +416,76 @@
       "Type": "Property"
     },
     {
+      "Name": "TopAppCpuset",
+      "Path": "/dev/cpuset/top-app/cpus",
+      "Values": [
+        "0-7",
+        "0-6",
+        "0-4",
+        "0-3",
+        "2-3",
+        "0-1"
+      ],
+      "DefaultIndex": 0,
+      "ResetOnInit": true
+    },
+    {
+      "Name": "ForegroundCpuset",
+      "Path": "/dev/cpuset/foreground/cpus",
+      "Values": [
+        "0-7",
+        "0-6",
+        "0-4",
+        "0-3",
+        "2-3",
+        "0-1"
+      ],
+      "DefaultIndex": 1,
+      "ResetOnInit": true
+    },
+    {
+      "Name": "BackgroundCpuset",
+      "Path": "/dev/cpuset/background/cpus",
+      "Values": [
+        "0-7",
+        "0-6",
+        "0-4",
+        "0-3",
+        "2-3",
+        "0-1"
+      ],
+      "DefaultIndex": 5,
+      "ResetOnInit": true
+    },
+    {
+      "Name": "RestrictedCpuset",
+      "Path": "/dev/cpuset/restricted/cpus",
+      "Values": [
+        "0-7",
+        "0-6",
+        "0-4",
+        "0-3",
+        "2-3",
+        "0-1"
+      ],
+      "DefaultIndex": 3,
+      "ResetOnInit": true
+    },
+    {
+      "Name": "SystemBackgroundCpuset",
+      "Path": "/dev/cpuset/system-background/cpus",
+      "Values": [
+        "0-7",
+        "0-6",
+        "0-4",
+        "0-3",
+        "2-3",
+        "0-1"
+      ],
+      "DefaultIndex": 3,
+      "ResetOnInit": true
+    },
+    {
       "Name": "PMKeepAwake",
       "Path": "/sys/power/keep_awake",
       "Values": [
@@ -364,8 +512,18 @@
     { "PowerHint": "INTERACTIVE", "Node": "CPUBigPlusClusterCoreCtl", "Duration": 0, "Value": "1", "OverrideProperty": "persist.baikal.inter.CPUBigPlusClusterCoreCtl" },
     { "PowerHint": "INTERACTIVE", "Node": "sched_downmigrate", "Duration": 0, "Value": "75 85"},
     { "PowerHint": "INTERACTIVE", "Node": "sched_upmigrate", "Duration": 0, "Value": "85 95"},
+    { "PowerHint": "INTERACTIVE", "Node": "TASilverBoost", "Duration": 0, "Value": "-5", "OverrideProperty": "persist.baikal.inter.TASilverBoost" },
+    { "PowerHint": "INTERACTIVE", "Node": "TAGoldBoost", "Duration": 0, "Value": "-5", "OverrideProperty": "persist.baikal.inter.TAGoldBoost" },
+    { "PowerHint": "INTERACTIVE", "Node": "TAPlusBoost", "Duration": 0, "Value": "-5", "OverrideProperty": "persist.baikal.inter.TAPlusBoost" },
+    { "PowerHint": "INTERACTIVE", "Node": "UclampTALatency", "Duration": 0, "Value": "1"},
 
     { "PowerHint": "SUSTAINED_PERFORMANCE", "Node": "PowerHALMainState", "Duration": 0, "Value": "SUSTAINED_PERFORMANCE" },
+
+    { "PowerHint": "SUSTAINED_PERFORMANCE", "Node": "TopAppCpuset", "Duration": 0, "Value": "0-7" },
+    { "PowerHint": "SUSTAINED_PERFORMANCE", "Node": "ForegroundCpuset", "Duration": 0, "Value": "0-6" },
+    { "PowerHint": "SUSTAINED_PERFORMANCE", "Node": "BackgroundCpuset", "Duration": 0, "Value": "2-3" },
+    { "PowerHint": "SUSTAINED_PERFORMANCE", "Node": "RestrictedCpuset", "Duration": 0, "Value": "0-3" },
+    { "PowerHint": "SUSTAINED_PERFORMANCE", "Node": "SystemBackgroundCpuset", "Duration": 0, "Value": "0-3" },
 
     { "PowerHint": "SUSTAINED_PERFORMANCE", "Node": "CPULittleClusterMaxFreq", "Duration": 0, "Value": "1516800", "OverrideProperty": "persist.baikal.sustain.CPULittleClusterMaxFreq" },
     { "PowerHint": "SUSTAINED_PERFORMANCE", "Node": "CPUBigClusterMaxFreq", "Duration": 0, "Value": "1651200", "OverrideProperty": "persist.baikal.sustain.CPUBigClusterMaxFreq" },
@@ -385,8 +543,18 @@
 
     { "PowerHint": "SUSTAINED_PERFORMANCE", "Node": "sched_downmigrate", "Duration": 0, "Value": "65 75"},
     { "PowerHint": "SUSTAINED_PERFORMANCE", "Node": "sched_upmigrate", "Duration": 0, "Value": "75 85"},
+    { "PowerHint": "SUSTAINED_PERFORMANCE", "Node": "TASilverBoost", "Duration": 0, "Value": "15", "OverrideProperty": "persist.baikal.sustain.TASilverBoost" },
+    { "PowerHint": "SUSTAINED_PERFORMANCE", "Node": "TAGoldBoost", "Duration": 0, "Value": "15", "OverrideProperty": "persist.baikal.sustain.TAGoldBoost" },
+    { "PowerHint": "SUSTAINED_PERFORMANCE", "Node": "TAPlusBoost", "Duration": 0, "Value": "15", "OverrideProperty": "persist.baikal.sustain.TAPlusBoost" },
+    { "PowerHint": "SUSTAINED_PERFORMANCE", "Node": "UclampTALatency", "Duration": 0, "Value": "1"},
 
     { "PowerHint": "FIXED_PERFORMANCE", "Node": "PowerHALMainState", "Duration": 0, "Value": "FIXED_PERFORMANCE" },
+
+    { "PowerHint": "FIXED_PERFORMANCE", "Node": "TopAppCpuset", "Duration": 0, "Value": "0-7" },
+    { "PowerHint": "FIXED_PERFORMANCE", "Node": "ForegroundCpuset", "Duration": 0, "Value": "0-6" },
+    { "PowerHint": "FIXED_PERFORMANCE", "Node": "BackgroundCpuset", "Duration": 0, "Value": "2-3" },
+    { "PowerHint": "FIXED_PERFORMANCE", "Node": "RestrictedCpuset", "Duration": 0, "Value": "0-3" },
+    { "PowerHint": "FIXED_PERFORMANCE", "Node": "SystemBackgroundCpuset", "Duration": 0, "Value": "0-3" },
 
     { "PowerHint": "FIXED_PERFORMANCE", "Node": "CPULittleClusterMaxFreq", "Duration": 0, "Value": "9999999", "OverrideProperty": "persist.baikal.fixed.CPULittleClusterMaxFreq" },
     { "PowerHint": "FIXED_PERFORMANCE", "Node": "CPUBigClusterMaxFreq", "Duration": 0, "Value": "9999999", "OverrideProperty": "persist.baikal.fixed.CPUBigClusterMaxFreq" },
@@ -395,7 +563,9 @@
     { "PowerHint": "FIXED_PERFORMANCE", "Node": "CPUBigClusterMinFreq", "Duration": 0, "Value": "1228800", "OverrideProperty": "persist.baikal.fixed.CPUBigClusterMinFreq" },
     { "PowerHint": "FIXED_PERFORMANCE", "Node": "CPUBigPlusClusterMinFreq", "Duration": 0, "Value": "1056000", "OverrideProperty": "persist.baikal.fixed.CPUBigPlusClusterMinFreq" },
     { "PowerHint": "FIXED_PERFORMANCE", "Node": "UclampTAMin", "Duration": 0, "Value": "50" },
-
+    { "PowerHint": "FIXED_PERFORMANCE", "Node": "TASilverBoost", "Duration": 0, "Value": "15", "OverrideProperty": "persist.baikal.fixed.TASilverBoost" },
+    { "PowerHint": "FIXED_PERFORMANCE", "Node": "TAGoldBoost", "Duration": 0, "Value": "15", "OverrideProperty": "persist.baikal.fixed.TAGoldBoost" },
+    { "PowerHint": "FIXED_PERFORMANCE", "Node": "TAPlusBoost", "Duration": 0, "Value": "15", "OverrideProperty": "persist.baikal.fixed.TAPlusBoost" },
 
     { "PowerHint": "FIXED_PERFORMANCE", "Node": "GPUMinFreq", "Duration": 0, "Value": "1", "OverrideProperty": "persist.baikal.fixed.GPUMinFreq" },
     { "PowerHint": "FIXED_PERFORMANCE", "Node": "GPUMaxFreq", "Duration": 0, "Value": "0", "OverrideProperty": "persist.baikal.fixed.GPUMaxFreq" },
@@ -407,9 +577,17 @@
 
     { "PowerHint": "FIXED_PERFORMANCE", "Node": "sched_downmigrate", "Duration": 0, "Value": "65 75"},
     { "PowerHint": "FIXED_PERFORMANCE", "Node": "sched_upmigrate", "Duration": 0, "Value": "75 85"},
+    { "PowerHint": "FIXED_PERFORMANCE", "Node": "UclampTALatency", "Duration": 0, "Value": "1"},
+
 
 
     { "PowerHint": "LOW_POWER", "Node": "PowerHALMainState", "Duration": 0, "Value": "LOW_POWER" },
+
+    { "PowerHint": "LOW_POWER", "Node": "TopAppCpuset", "Duration": 0, "Value": "0-6" },
+    { "PowerHint": "LOW_POWER", "Node": "ForegroundCpuset", "Duration": 0, "Value": "0-3" },
+    { "PowerHint": "LOW_POWER", "Node": "BackgroundCpuset", "Duration": 0, "Value": "2-3" },
+    { "PowerHint": "LOW_POWER", "Node": "RestrictedCpuset", "Duration": 0, "Value": "2-3" },
+    { "PowerHint": "LOW_POWER", "Node": "SystemBackgroundCpuset", "Duration": 0, "Value": "0-1" },
 
     { "PowerHint": "LOW_POWER", "Node": "CPULittleClusterMaxFreq", "Duration": 0, "Value": "1651200", "OverrideProperty": "persist.baikal.low.CPULittleClusterMaxFreq" },
     { "PowerHint": "LOW_POWER", "Node": "CPUBigClusterMaxFreq", "Duration": 0, "Value": "1900800", "OverrideProperty": "persist.baikal.low.CPUBigClusterMaxFreq" },
@@ -422,14 +600,25 @@
     { "PowerHint": "LOW_POWER", "Node": "GPUMinFreq", "Duration": 0, "Value": "2", "OverrideProperty": "persist.baikal.low.GPUMinFreq" },
     { "PowerHint": "LOW_POWER", "Node": "GPUMaxFreq", "Duration": 0, "Value": "2", "OverrideProperty": "persist.baikal.low.GPUMaxFreq" },
 
-    { "PowerHint": "LOW_POWER", "Node": "CPULittleClusterCoreCtl", "Duration": 0, "Value": "1" },
-    { "PowerHint": "LOW_POWER", "Node": "CPUBigClusterCoreCtl", "Duration": 0, "Value": "1" },
-    { "PowerHint": "LOW_POWER", "Node": "CPUBigPlusClusterCoreCtl", "Duration": 0, "Value": "1" },
+    { "PowerHint": "LOW_POWER", "Node": "CPULittleClusterCoreCtl", "Duration": 0, "Value": "1", "OverrideProperty": "persist.baikal.low.CPULittleClusterCoreCtl" },
+    { "PowerHint": "LOW_POWER", "Node": "CPUBigClusterCoreCtl", "Duration": 0, "Value": "1", "OverrideProperty": "persist.baikal.low.CPUBigClusterCoreCtl"  },
+    { "PowerHint": "LOW_POWER", "Node": "CPUBigPlusClusterCoreCtl", "Duration": 0, "Value": "1", "OverrideProperty": "persist.baikal.low.CPUBigPlusClusterCoreCtl"  },
 
     { "PowerHint": "LOW_POWER", "Node": "sched_downmigrate", "Duration": 0, "Value": "95 95"},
     { "PowerHint": "LOW_POWER", "Node": "sched_upmigrate", "Duration": 0, "Value": "99 99"},
 
+    { "PowerHint": "LOW_POWER", "Node": "TASilverBoost", "Duration": 0, "Value": "-10", "OverrideProperty": "persist.baikal.low.TASilverBoost" },
+    { "PowerHint": "LOW_POWER", "Node": "TAGoldBoost", "Duration": 0, "Value": "-25", "OverrideProperty": "persist.baikal.low.TAGoldBoost" },
+    { "PowerHint": "LOW_POWER", "Node": "TAPlusBoost", "Duration": 0, "Value": "-50", "OverrideProperty": "persist.baikal.low.TAPlusBoost" },
+
+
     { "PowerHint": "DEVICE_IDLE", "Node": "PowerHALMainState", "Duration": 0, "Value": "DEVICE_IDLE" },
+
+    { "PowerHint": "DEVICE_IDLE", "Node": "TopAppCpuset", "Duration": 0, "Value": "0-3" },
+    { "PowerHint": "DEVICE_IDLE", "Node": "ForegroundCpuset", "Duration": 0, "Value": "0-3" },
+    { "PowerHint": "DEVICE_IDLE", "Node": "BackgroundCpuset", "Duration": 0, "Value": "2-3" },
+    { "PowerHint": "DEVICE_IDLE", "Node": "RestrictedCpuset", "Duration": 0, "Value": "2-3" },
+    { "PowerHint": "DEVICE_IDLE", "Node": "SystemBackgroundCpuset", "Duration": 0, "Value": "0-1" },
 
     { "PowerHint": "DEVICE_IDLE", "Node": "CPULittleClusterMaxFreq", "Duration": 0, "Value": "1651200", "OverrideProperty": "persist.baikal.idle.CPULittleClusterMaxFreq" },
     { "PowerHint": "DEVICE_IDLE", "Node": "CPUBigClusterMaxFreq", "Duration": 0, "Value": "1900800", "OverrideProperty": "persist.baikal.idle.CPUBigClusterMaxFreq" },
@@ -449,7 +638,19 @@
     { "PowerHint": "DEVICE_IDLE", "Node": "sched_downmigrate", "Duration": 0, "Value": "95 95"},
     { "PowerHint": "DEVICE_IDLE", "Node": "sched_upmigrate", "Duration": 0, "Value": "99 99"},
 
+    { "PowerHint": "DEVICE_IDLE", "Node": "TASilverBoost", "Duration": 0, "Value": "-10", "OverrideProperty": "persist.baikal.idle.TASilverBoost" },
+    { "PowerHint": "DEVICE_IDLE", "Node": "TAGoldBoost", "Duration": 0, "Value": "-25", "OverrideProperty": "persist.baikal.idle.TAGoldBoost" },
+    { "PowerHint": "DEVICE_IDLE", "Node": "TAPlusBoost", "Duration": 0, "Value": "-50", "OverrideProperty": "persist.baikal.idle.TAPlusBoost" },
+
+
     { "PowerHint": "INTERACTION", "Node": "PowerHALMainState", "Duration": 0, "Value": "INTERACTION" },
+
+    { "PowerHint": "INTERACTION", "Node": "TopAppCpuset", "Duration": 0, "Value": "0-7" },
+    { "PowerHint": "INTERACTION", "Node": "ForegroundCpuset", "Duration": 0, "Value": "0-6" },
+    { "PowerHint": "INTERACTION", "Node": "BackgroundCpuset", "Duration": 0, "Value": "2-3" },
+    { "PowerHint": "INTERACTION", "Node": "RestrictedCpuset", "Duration": 0, "Value": "0-3" },
+    { "PowerHint": "INTERACTION", "Node": "SystemBackgroundCpuset", "Duration": 0, "Value": "0-3" },
+
     { "PowerHint": "INTERACTION", "Node": "PMKeepAwake", "Duration": 0, "Value": "1" },
 
     { "PowerHint": "INTERACTION", "Node": "CPULittleClusterMaxFreq", "Duration": 0, "Value": "9999999", "OverrideProperty": "persist.baikal.boost.CPULittleClusterMaxFreq" },
@@ -465,7 +666,7 @@
 
     { "PowerHint": "INTERACTION", "Node": "CPULittleClusterCoreCtl", "Duration": 0, "Value": "0" },
     { "PowerHint": "INTERACTION", "Node": "CPUBigClusterCoreCtl", "Duration": 0, "Value": "0" },
-    { "PowerHint": "INTERACTION", "Node": "CPUBigPlusClusterCoreCtl", "Duration": 0, "Value": "0" },
+    { "PowerHint": "INTERACTION", "Node": "CPUBigPlusClusterCoreCtl", "Duration": 0, "Value": "1" },
 
     { "PowerHint": "INTERACTION", "Node": "UclampTAMin", "Duration": 0, "Value": "20" },
     { "PowerHint": "INTERACTION", "Node": "CPUBWHystTriggerCount", "Duration": 0, "Value": "0" },
@@ -476,9 +677,21 @@
 
     { "PowerHint": "INTERACTION", "Node": "sched_downmigrate", "Duration": 0, "Value": "75 85"},
     { "PowerHint": "INTERACTION", "Node": "sched_upmigrate", "Duration": 0, "Value": "85 95"},
+    { "PowerHint": "INTERACTION", "Node": "TASilverBoost", "Duration": 0, "Value": "25", "OverrideProperty": "persist.baikal.boost.TASilverBoost" },
+    { "PowerHint": "INTERACTION", "Node": "TAGoldBoost", "Duration": 0, "Value": "15", "OverrideProperty": "persist.baikal.boost.TAGoldBoost" },
+    { "PowerHint": "INTERACTION", "Node": "TAPlusBoost", "Duration": 0, "Value": "0", "OverrideProperty": "persist.baikal.boost.TAPlusBoost" },
+    { "PowerHint": "INTERACTION", "Node": "UclampTALatency", "Duration": 0, "Value": "1"},
+
+
 
     { "PowerHint": "LAUNCH", "Node": "PowerHALMainState", "Duration": 3000, "Value": "LAUNCH" },
     { "PowerHint": "LAUNCH", "Node": "PMKeepAwake", "Duration": 0, "Value": "1" },
+
+    { "PowerHint": "LAUNCH", "Node": "TopAppCpuset", "Duration": 0, "Value": "0-7" },
+    { "PowerHint": "LAUNCH", "Node": "ForegroundCpuset", "Duration": 0, "Value": "0-6" },
+    { "PowerHint": "LAUNCH", "Node": "BackgroundCpuset", "Duration": 0, "Value": "2-3" },
+    { "PowerHint": "LAUNCH", "Node": "RestrictedCpuset", "Duration": 0, "Value": "0-3" },
+    { "PowerHint": "LAUNCH", "Node": "SystemBackgroundCpuset", "Duration": 0, "Value": "0-3" },
 
     { "PowerHint": "LAUNCH", "Node": "CPUBigClusterMinFreq", "Duration": 3000, "Value": "9999999" },
     { "PowerHint": "LAUNCH", "Node": "CPUBigPlusClusterMinFreq", "Duration": 3000, "Value": "9999999" },
@@ -499,10 +712,19 @@
 
     { "PowerHint": "LAUNCH", "Node": "sched_downmigrate", "Duration": 0, "Value": "75 85"},
     { "PowerHint": "LAUNCH", "Node": "sched_upmigrate", "Duration": 0, "Value": "85 95"},
+    { "PowerHint": "LAUNCH", "Node": "TASilverBoost", "Duration": 0, "Value": "25"},
+    { "PowerHint": "LAUNCH", "Node": "TAGoldBoost", "Duration": 0, "Value": "15"},
+    { "PowerHint": "LAUNCH", "Node": "TAPlusBoost", "Duration": 0, "Value": "10"},
+    { "PowerHint": "LAUNCH", "Node": "UclampTALatency", "Duration": 0, "Value": "1"},
+
 
     { "PowerHint": "EXPENSIVE_RENDERING", "Node": "PowerHALRenderingState", "Duration": 0, "Value": "EXPENSIVE_RENDERING" },
     { "PowerHint": "EXPENSIVE_RENDERING", "Node": "PowerHALMainState", "Duration": 0, "Value": "EXPENSIVE_RENDERING" },
+
     { "PowerHint": "EXPENSIVE_RENDERING", "Node": "PMKeepAwake", "Duration": 0, "Value": "1" },
+
+    { "PowerHint": "EXPENSIVE_RENDERING", "Node": "TopAppCpuset", "Duration": 0, "Value": "0-7" },
+    { "PowerHint": "EXPENSIVE_RENDERING", "Node": "ForegroundCpuset", "Duration": 0, "Value": "0-6" },
 
     { "PowerHint": "EXPENSIVE_RENDERING", "Node": "CPULittleClusterMaxFreq", "Duration": 0, "Value": "9999999", "OverrideProperty": "persist.baikal.render.CPULittleClusterMaxFreq" },
     { "PowerHint": "EXPENSIVE_RENDERING", "Node": "CPUBigClusterMaxFreq", "Duration": 0, "Value": "9999999", "OverrideProperty": "persist.baikal.render.CPUBigClusterMaxFreq" },
@@ -515,13 +737,14 @@
     { "PowerHint": "EXPENSIVE_RENDERING", "Node": "GPUMinFreq", "Duration": 0, "Value": "0", "OverrideProperty": "persist.baikal.render.GPUMinFreq" },
     { "PowerHint": "EXPENSIVE_RENDERING", "Node": "GPUMaxFreq", "Duration": 0, "Value": "0", "OverrideProperty": "persist.baikal.render.GPUMaxFreq" },
 
-    { "PowerHint": "EXPENSIVE_RENDERING", "Node": "UclampTAMin", "Duration": 0, "Value": "20" },
     { "PowerHint": "EXPENSIVE_RENDERING", "Node": "CPULittleClusterCoreCtl", "Duration": 0, "Value": "0" },
     { "PowerHint": "EXPENSIVE_RENDERING", "Node": "CPUBigClusterCoreCtl", "Duration": 0, "Value": "0" },
-    { "PowerHint": "EXPENSIVE_RENDERING", "Node": "CPUBigPlusClusterCoreCtl", "Duration": 0, "Value": "0" },
+    { "PowerHint": "EXPENSIVE_RENDERING", "Node": "CPUBigPlusClusterCoreCtl", "Duration": 0, "Value": "1" },
 
     { "PowerHint": "EXPENSIVE_RENDERING", "Node": "sched_downmigrate", "Duration": 0, "Value": "75 85"},
     { "PowerHint": "EXPENSIVE_RENDERING", "Node": "sched_upmigrate", "Duration": 0, "Value": "85 95"},
+
+    { "PowerHint": "EXPENSIVE_RENDERING", "Node": "UclampTALatency", "Duration": 0, "Value": "1"},
 
     { "PowerHint": "AUDIO_STREAMING_LOW_LATENCY", "Node": "PowerHALAudioState","Duration": 0,"Value": "AUDIO_STREAMING_LOW_LATENCY"},
     { "PowerHint": "AUDIO_STREAMING_LOW_LATENCY", "Node": "CPULittleClusterCoreCtl", "Duration": 0, "Value": "0" },
