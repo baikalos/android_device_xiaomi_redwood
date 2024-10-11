@@ -47,8 +47,8 @@ ro.vendor.audio.soundtrigger.xiaomievent=1
 ro.vendor.audio.soundtrigger=sva
 ro.vendor.audio.us.proximity=true
 vendor.audio.adm.buffering.ms=6
-vendor.audio.dolby.ds2.enabled=false
-vendor.audio.dolby.ds2.hardbypass=false
+#vendor.audio.dolby.ds2.enabled=false
+#vendor.audio.dolby.ds2.hardbypass=false
 vendor.audio.enable.mirrorlink=false
 vendor.audio.feature.a2dp_offload.enable=true
 vendor.audio.feature.afe_proxy.enable=true
@@ -96,7 +96,7 @@ vendor.audio.feature.wsa.enable=false
 vendor.audio.flac.sw.decoder.24bit=true
 vendor.audio.hal.output.suspend.supported=false
 vendor.audio.hw.aac.encoder=true
-vendor.audio.offload.buffer.size.kb=256
+vendor.audio.offload.buffer.size.kb=32
 vendor.audio.offload.gapless.enabled=true
 vendor.audio.offload.multiaac.enable=true
 vendor.audio.offload.multiple.enabled=false
@@ -122,17 +122,25 @@ bluetooth.hardware.power.tx_cur_ma=36
 bluetooth.profile.asha.central.enabled?=true
 bluetooth.profile.a2dp.source.enabled?=true
 bluetooth.profile.avrcp.target.enabled?=true
+bluetooth.profile.bap.broadcast.assist.enabled?=true
+bluetooth.profile.bap.unicast.client.enabled?=true
 bluetooth.profile.bas.client.enabled?=true
+bluetooth.profile.csip.set_coordinator.enabled?=true
 bluetooth.profile.gatt.enabled?=true
+bluetooth.profile.hap.client.enabled?=true
 bluetooth.profile.hfp.ag.enabled?=true
 bluetooth.profile.hid.device.enabled?=true
 bluetooth.profile.hid.host.enabled?=true
+bluetooth.profile.map.client.enabled?=true
 bluetooth.profile.map.server.enabled?=true
+bluetooth.profile.mcp.server.enabled?=true
 bluetooth.profile.opp.enabled?=true
 bluetooth.profile.pan.nap.enabled?=true
 bluetooth.profile.pan.panu.enabled?=true
 bluetooth.profile.pbap.server.enabled?=true
 bluetooth.profile.sap.server.enabled?=true
+bluetooth.profile.ccp.server.enabled?=true
+bluetooth.profile.vcp.controller.enabled?=true
 persist.bluetooth.a2dp_offload.disabled=false
 persist.vendor.bt.aac_frm_ctl.enabled=true
 persist.vendor.bt.aac_vbr_frm_ctl.enabled=true
@@ -197,8 +205,10 @@ debug.sf.enable_hwc_vds=1
 debug.sf.enable_transaction_tracing=false
 debug.sf.frame_rate_multiple_threshold=120
 
+ro.hwui.render_ahead=20
 debug.sf.hw=0
 debug.sf.latch_unsignaled=1
+debug.sf.auto_latch_unsignaled=0
 debug.sf.set_idle_timer_ms=3000
 persist.sys.sf.color_mode=9
 persist.sys.sf.color_saturation=1.0
@@ -303,6 +313,9 @@ zygote.critical_window.minute=10
 
 baikalos.fuse.passthrough=true
 
+#ZRAM
+persist.baikal.zramsize=2048
+
 #little
 #    9999999 - 0
 #    1651200 - 1
@@ -358,6 +371,9 @@ persist.baikal.boost.CPUBigClusterMinFreq=5
 persist.baikal.boost.CPUBigPlusClusterMinFreq=7
 persist.baikal.boost.GPUMinFreq=2
 persist.baikal.boost.GPUMaxFreq=0
+persist.baikal.boost.TASilverBoost=3
+persist.baikal.boost.TAGoldBoost=4
+persist.baikal.boost.TAPlusBoost=5
 
 persist.baikal.idle.CPULittleClusterMaxFreq=1
 persist.baikal.idle.CPUBigClusterMaxFreq=3
@@ -367,6 +383,9 @@ persist.baikal.idle.CPUBigClusterMinFreq=9
 persist.baikal.idle.CPUBigPlusClusterMinFreq=9
 persist.baikal.idle.GPUMinFreq=2
 persist.baikal.idle.GPUMaxFreq=2
+persist.baikal.idle.TASilverBoost=9
+persist.baikal.idle.TAGoldBoost=11
+persist.baikal.idle.TAPlusBoost=12
 
 persist.baikal.low.CPULittleClusterMaxFreq=1
 persist.baikal.low.CPUBigClusterMaxFreq=3
@@ -376,6 +395,12 @@ persist.baikal.low.CPUBigClusterMinFreq=9
 persist.baikal.low.CPUBigPlusClusterMinFreq=9
 persist.baikal.low.GPUMinFreq=2
 persist.baikal.low.GPUMaxFreq=2
+persist.baikal.low.TASilverBoost=9
+persist.baikal.low.TAGoldBoost=11
+persist.baikal.low.TAPlusBoost=12
+persist.baikal.low.CPULittleClusterCoreCtl=1
+persist.baikal.low.CPUBigClusterCoreCtl=1
+persist.baikal.low.CPUBigPlusClusterCoreCtl=1
 
 persist.baikal.fixed.CPULittleClusterMaxFreq=0
 persist.baikal.fixed.CPUBigClusterMaxFreq=0
@@ -385,6 +410,9 @@ persist.baikal.fixed.CPUBigClusterMinFreq=7
 persist.baikal.fixed.CPUBigPlusClusterMinFreq=8
 persist.baikal.fixed.GPUMinFreq=1
 persist.baikal.fixed.GPUMaxFreq=0
+persist.baikal.fixed.TASilverBoost=4
+persist.baikal.fixed.TAGoldBoost=4
+persist.baikal.fixed.TAPlusBoost=4
 
 persist.baikal.sustain.CPULittleClusterMaxFreq=2
 persist.baikal.sustain.CPUBigClusterMaxFreq=4
@@ -394,6 +422,9 @@ persist.baikal.sustain.CPUBigClusterMinFreq=8
 persist.baikal.sustain.CPUBigPlusClusterMinFreq=8
 persist.baikal.sustain.GPUMinFreq=2
 persist.baikal.sustain.GPUMaxFreq=1
+persist.baikal.sustain.TASilverBoost=4
+persist.baikal.sustain.TAGoldBoost=4
+persist.baikal.sustain.TAPlusBoost=4
 
 persist.baikal.inter.CPULittleClusterMaxFreq=0
 persist.baikal.inter.CPUBigClusterMaxFreq=0
@@ -406,3 +437,6 @@ persist.baikal.inter.GPUMaxFreq=0
 persist.baikal.inter.CPULittleClusterCoreCtl=1
 persist.baikal.inter.CPUBigClusterCoreCtl=1
 persist.baikal.inter.CPUBigPlusClusterCoreCtl=1
+persist.baikal.inter.TASilverBoost=8
+persist.baikal.inter.TAGoldBoost=8
+persist.baikal.inter.TAPlusBoost=8
