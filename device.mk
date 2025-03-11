@@ -187,16 +187,19 @@ PRODUCT_COPY_FILES += \
 
 # Codec2
 #PRODUCT_PACKAGES += \
-    libcodec2_vndk.vendor \
-    libcodec2_hidl@1.0.vendor
+#    libcodec2_vndk.vendor \
+#    libcodec2_hidl@1.0.vendor
 
 # DebugFS
 PRODUCT_SET_DEBUGFS_RESTRICTIONS := true
 
+#    android.hardware.graphics.allocator@3.0 \
+
+
 # Display
 PRODUCT_PACKAGES += \
-    android.hardware.graphics.allocator@3.0 \
     android.hardware.graphics.allocator@3.0.vendor \
+    android.hardware.graphics.allocator@4.0.vendor \
     android.hardware.graphics.mapper@3.0-impl-qti-display \
     android.hardware.graphics.mapper@4.0-impl-qti-display \
     android.hardware.memtrack@1.0-impl \
@@ -206,7 +209,6 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.display.mapper@2.0.vendor \
 
 PRODUCT_PACKAGES += \
-    android.hardware.graphics.allocator@3.0.vendor \
     vendor.display.config@1.15.vendor \
     vendor.display.config@2.0.vendor
 
@@ -473,6 +475,11 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 # Perf
 PRODUCT_PACKAGES += \
     libqti-perfd-client
+
+# Enable adpf cpu hint session for SurfaceFlinger and HWUI
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    debug.sf.enable_adpf_cpu_hint=true \
+    debug.hwui.use_hint_manager=true
 
 # Power
 PRODUCT_PACKAGES += \
