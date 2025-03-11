@@ -222,7 +222,7 @@ ro.surface_flinger.has_wide_color_display=true
 ro.surface_flinger.max_frame_buffer_acquired_buffers=3
 ro.surface_flinger.max_virtual_display_dimension=4096
 ro.surface_flinger.protected_contents=true
-ro.surface_flinger.set_touch_timer_ms=200
+ro.surface_flinger.set_touch_timer_ms=2000
 ro.surface_flinger.set_idle_timer_ms=80
 ro.surface_flinger.set_display_power_timer_ms=1000
 ro.surface_flinger.use_color_management=true
@@ -315,6 +315,12 @@ baikalos.fuse.passthrough=true
 
 #ZRAM
 persist.baikal.zramsize=2048
+
+persist.baikal.srv.jdsp=0
+persist.baikal.srv.dolby=0
+persist.baikal.srv.afx=1
+
+persist.baikal.fps_filter=90
 
 #little
 #    9999999 - 0
