@@ -156,4 +156,10 @@ on property:persist.baikal.filterfs_isolated=false
 on property:persist.baikal.filter_uids=*
     write /sys/module/baikalfs/parameters/filter_uids ${persist.baikal.filter_uids:-"999999"}
 
+on property:persist.baikal.filter_uids_add=*
+    write /sys/module/baikalfs/parameters/filter_uids_add ${persist.baikal.filter_uids_add:-"999999"}
 
+
+on property:init.svc.statsd=running
+    # Disable native stats collection service
+    stop statsd
