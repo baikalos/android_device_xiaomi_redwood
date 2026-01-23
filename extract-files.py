@@ -38,6 +38,7 @@ lib_fixups: lib_fixups_user_type = {
     (
         'com.qualcomm.qti.dpm.api@1.0',
         'libmmosal',
+        'vendor.qti.hardware.wifidisplaysession@1.0',
         'vendor.qti.diaghal@1.0',
         'vendor.qti.imsrtpservice@3.0',
     ): lib_fixup_vendor_suffix,
@@ -87,6 +88,9 @@ blob_fixups: blob_fixups_user_type = {
     'vendor/lib64/libmialgoengine.so' : blob_fixup()
         .remove_needed('android.hardware.graphics.allocator@3.0.so')
         .remove_needed('vendor.qti.hardware.display.allocator@3.0.so'),
+    'system_ext/lib64/libwfdnative.so': blob_fixup()
+        .add_needed('libbinder_shim.so')
+        .add_needed('libinput_shim.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
