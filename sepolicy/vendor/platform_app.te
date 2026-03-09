@@ -32,3 +32,20 @@ allowxperm platform_app apk_data_file:file ioctl {
   FS_IOC_SETFLAGS
   FS_IOC_GETFLAGS
 };
+
+
+allow platform_app vendor_hal_soter_hwservice:hwservice_manager find;
+binder_call(platform_app, vendor_hal_soter_qti)
+
+# FPS info
+allow platform_app sysfs_graphics:file r_file_perms;
+allow platform_app vendor_sysfs_kgsl:file r_file_perms;
+allow platform_app vendor_sysfs_battery_supply:dir search;
+allow platform_app vendor_sysfs_battery_supply:file r_file_perms;
+
+allow platform_app vendor_sysfs_graphics:dir search;
+allow platform_app vendor_sysfs_graphics:file r_file_perms;
+
+# allow platform_app sysfs_hbm:file rw_file_perms;
+# allow platform_app sysfs_cabc:file rw_file_perms;
+

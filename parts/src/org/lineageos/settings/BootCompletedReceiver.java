@@ -26,8 +26,6 @@ import androidx.preference.PreferenceManager;
 import android.util.Log;
 
 import org.lineageos.settings.utils.FileUtils;
-import org.lineageos.settings.thermal.ThermalUtils;
-import org.lineageos.settings.refreshrate.RefreshUtils;
 
 public class BootCompletedReceiver extends BroadcastReceiver {
     private static final boolean DEBUG = false;
@@ -53,7 +51,5 @@ public class BootCompletedReceiver extends BroadcastReceiver {
     
     private static void onBootCompleted(Context context) {
         // Data is now accessible (user has just unlocked).
-        RefreshUtils.initialize(context);
-        ThermalUtils.startService(context);
     }        
 }

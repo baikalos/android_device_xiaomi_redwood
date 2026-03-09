@@ -133,7 +133,12 @@ firmware_directories /vendor/firmware_mnt/image/
 /sys/devices/soc0           serial_number            0000    root    root
 
 # Charger
-/sys/class/qcom-battery     input_suspend            0660    system  system
+/sys/class/qcom-battery     input_suspend            0664    system  system
+/sys/class/qcom-battery     night_charging           0664    system  system
+/sys/class/qcom-battery     cool_mode                0664    system  system
+/sys/class/qcom-battery     sport_mode               0664    system  system
+/sys/class/qcom-battery     real_type                0664    system  system
+
 
 # mius iio devices
 /dev/iio:device*                                        0660   system     system
@@ -147,3 +152,4 @@ firmware_directories /vendor/firmware_mnt/image/
 # Torch control
 /sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pm8350c@2:qcom,flash_led@ee00/leds/led:torch_0 brightness 0660 cameraserver camera
 /sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pm8350c@2:qcom,flash_led@ee00/leds/led:switch_0 0660 cameraserver camera
+

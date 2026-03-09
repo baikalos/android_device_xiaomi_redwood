@@ -1,0 +1,75 @@
+# ==============================================
+# Attribute Definition
+# ==============================================
+# We declare it here to satisfy the vendor-side compiler.
+# It will merge with the system-side declaration during final policy build.
+#attribute hal_display_extension_server;
+
+# ==============================================
+# Domain Definitions
+# ==============================================
+type hal_displayfeature_xiaomi, domain;
+type hal_displayfeature_xiaomi_exec, exec_type, vendor_file_type, file_type;
+
+type hal_displayfeature_xiaomi_service, vndservice_manager_type;
+type hal_displayfeature_xiaomi_hwservice, hwservice_manager_type;
+
+
+# Standard macro to allow init to execute the binary and switch domain
+init_daemon_domain(hal_displayfeature_xiaomi)
+
+# Explicit permissions if the macro is restricted in your tree
+# Allow init to see and execute the file
+allow init hal_displayfeature_xiaomi_exec:file { getattr open read execute };
+
+# Allow the process transition from init to our HAL domain
+allow init hal_displayfeature_xiaomi:process transition;
+
+# ==============================================
+# HIDL Rules (Fixes PID 923: denied { add/find })
+# ==============================================
+
+# 1. Allow the service to be added to hwservicemanager
+add_hwservice(hal_displayfeature_xiaomi, hal_displayfeature_xiaomi_hwservice)
+
+# 2. Allow the service to be found by clients
+allow hal_displayfeature_xiaomi hal_displayfeature_xiaomi_hwservice:hwservice_manager find;
+
+# 3. Allow registration of the base HIDL interface (android.hidl.base)
+allow hal_displayfeature_xiaomi hidl_base_hwservice:hwservice_manager add;
+
+# 4. Essential binder calls for HIDL
+binder_call(hal_displayfeature_xiaomi, hwservicemanager)
+get_prop(hal_displayfeature_xiaomi, hwservicemanager_prop)
+
+
+# AIDL
+
+allow hal_displayfeature_xiaomi hal_displayfeature_xiaomi_service:service_manager { add find };
+
+# Ensure we can talk to vndservicemanager
+vndbinder_use(hal_displayfeature_xiaomi)
+allow hal_displayfeature_xiaomi vndbinder_device:chr_file rw_file_perms;
+
+
+binder_use(hal_displayfeature_xiaomi)
+binder_call(hal_displayfeature_xiaomi, vndservicemanager)
+allow hal_displayfeature_xiaomi vndservicemanager:binder { transfer call };
+
+# ==============================================
+# Hardware Access
+# ==============================================
+# Allow interaction with the graphics stack
+allow hal_displayfeature_xiaomi ion_device:chr_file r_file_perms;
+allow hal_displayfeature_xiaomi graphics_device:dir search;
+allow hal_displayfeature_xiaomi graphics_device:chr_file rw_file_perms;
+
+# Standard socket for property management
+unix_socket_connect(hal_displayfeature_xiaomi, property, init)
+
+# Allow netlink events (common for display hotplug)
+allow hal_displayfeature_xiaomi self:netlink_kobject_uevent_socket create_socket_perms_no_ioctl;
+
+# Associate with the attribute
+#typeattribute hal_displayfeature_xiaomi hal_display_extension_server;
+

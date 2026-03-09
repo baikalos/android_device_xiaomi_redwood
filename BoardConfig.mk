@@ -4,6 +4,13 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+RELEASE_ACONFIG_VALUE_SET := trunk_staging
+
+#TARGET_ENABLE_ADB := true
+#BOARD_DEBUGGABLE := true
+#BOARD_ALLOW_ADBD_ROOT := true
+#WITH_ADB_INSECURE := true
+
 DEVICE_PATH := device/xiaomi/redwood
 
 BOARD_VENDOR := xiaomi

@@ -4,11 +4,15 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+
+PRODUCT_RELEASE_CONFIG_OVERRIDES += RELEASE_ACONFIGD_ENABLED=true
+RELEASE_ACONFIG_STORAGE_REWRITABLE := true
+
 # NFC
 TARGET_NFC_SUPPORTED_SKUS := redwood
 
 # Run the script before copying files
-$(shell bash vendor/xiaomi/redwood-miuicamera/vendorsetup.sh)
+# $(shell bash vendor/xiaomi/redwood-miuicamera/vendorsetup.sh)
 
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
@@ -163,7 +167,8 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     dalvik.vm.image-dex2oat-threads=8
 
 # Dolby
-$(call inherit-product, hardware/dolby/dolby.mk)
+# $(call inherit-product, hardware/dolby/dolby.mk)
+$(call inherit-product, vendor/xiaomi/redwood-dolby/dolby.mk)
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -278,7 +283,8 @@ PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
 PRODUCT_PACKAGES += \
     vendor.lineage.health-service.default
 
-$(call soong_config_set,lineage_health,charging_control_charging_path,/sys/class/qcom-battery/input_suspend)
+$(call soong_config_set,lineage_health,charging_control_charging_path,/sys/class/qcom-battery/night_charging)
+$(call soong_config_set_bool,lineage_health,charging_control_charging_toggle,true)
 $(call soong_config_set_bool,lineage_health,charging_control_supports_bypass,false)
 $(call soong_config_set,lineage_health,charging_control_charging_disabled,1)
 $(call soong_config_set,lineage_health,charging_control_charging_enabled,0)
@@ -365,8 +371,9 @@ PRODUCT_PACKAGES += \
     libqti-perfd-client
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/task_profiles.json:$(TARGET_COPY_OUT_VENDOR)/etc/task_profiles.json \
     $(LOCAL_PATH)/configs/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
+
+#    $(LOCAL_PATH)/configs/task_profiles.json:$(TARGET_COPY_OUT_VENDOR)/etc/task_profiles.json \
 
 $(call soong_config_set,power_libperfmgr,mode_extension_lib,//$(LOCAL_PATH):libperfmgr-ext-xiaomi)
 

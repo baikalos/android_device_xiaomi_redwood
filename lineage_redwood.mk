@@ -14,6 +14,8 @@ $(call inherit-product, device/xiaomi/redwood/device.mk)
 # Inherit some common crDroid stuff.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
+TARGET_ENABLE_BLUR := true
+
 PRODUCT_BRAND := POCO
 PRODUCT_DEVICE := redwood
 PRODUCT_MANUFACTURER := Xiaomi
